@@ -1,0 +1,64 @@
+# Sveltia CMS — Szerkesztőség
+# TEENDŐ élesítéskor: írd át a repo értékét a saját GitHub repótokra!
+backend:
+  name: github
+  repo: CSAPAT-GITHUB-NEV/kassaicserkesz-sk   # ← TODO: írd át a saját repótokra!
+  branch: main
+  # A bejelentkezéshez kell egy hitelesítő is — lásd ÁTADÁS.md „Szerkesztőség élesítése”.
+  # Ha kész a Cloudflare Worker (sveltia-cms-auth), töröld a kommentet és írd be a címét:
+  # base_url: https://sveltia-cms-auth.VALAKI.workers.dev
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+locale: hu
+
+collections:
+  - name: beszamolok
+    label: Beszámolók (galéria-albumok)
+    folder: src/content/beszamolok
+    create: true
+    slug: '{{fields.title | localize}}-{{year}}'
+    fields:
+      - { name: title, label: Esemény neve, widget: string }
+      - { name: date, label: Kezdete, widget: string, hint: 'ÉÉÉÉ-HH-NN' }
+      - { name: endDate, label: 'Vége (ha többnapos)', widget: string, required: false, hint: 'ÉÉÉÉ-HH-NN' }
+      - { name: place, label: Helyszín, widget: string, required: false }
+      - { name: cover, label: Borítókép, widget: image, required: false }
+      - { name: photos, label: Képek, widget: list, field: { name: photo, label: Kép, widget: image }, required: false }
+      - { name: body, label: Leírás, widget: markdown, required: false }
+
+  - name: esemenyek
+    label: Közelgő események
+    folder: src/content/esemenyek
+    create: true
+    slug: '{{fields.title | localize}}-{{year}}'
+    fields:
+      - { name: title, label: Esemény neve, widget: string }
+      - { name: start, label: Kezdete, widget: string, hint: 'ÉÉÉÉ-HH-NN' }
+      - { name: end, label: 'Vége (ha többnapos)', widget: string, required: false, hint: 'ÉÉÉÉ-HH-NN' }
+      - { name: time, label: Időpont, widget: string, required: false }
+      - { name: place, label: Helyszín, widget: string, required: false }
+      - { name: meghivo, label: 'Meghívó (PDF/kép)', widget: file, required: false }
+      - { name: urlap, label: 'Jelentkezési űrlap linkje', widget: string, required: false }
+      - { name: body, label: Rövid leírás, widget: markdown, required: false }
+
+  - name: beallitasok
+    label: Beállítások
+    files:
+      - name: adomanymero
+        label: Adománymérő (Támogatás oldal)
+        file: src/data/adomanymero.json
+        fields:
+          - { name: aktiv, label: 'Látszódjon a mérő?', widget: boolean }
+          - { name: cimke, label: 'Cél megnevezése', widget: string }
+          - { name: cimke_sk, label: 'Cél megnevezése (szlovákul)', widget: string }
+          - { name: cel, label: 'Célösszeg (€)', widget: number }
+          - { name: eddig, label: 'Eddig összegyűlt (€)', widget: number }
+          - { name: megjegyzes, label: 'Megjegyzés a mérő alatt', widget: string, required: false }
+          - { name: megjegyzes_sk, label: 'Megjegyzés (szlovákul)', widget: string, required: false }
+      - name: naptar
+        label: Google Naptár szinkron
+        file: src/data/naptar.json
+        fields:
+          - { name: google_ics_url, label: 'A nyilvános Google Naptár iCal (.ics) címe', widget: string, required: false, hint: 'Google Naptár → Beállítások → Naptár integrálása → „Nyilvános cím iCal formátumban”. Üresen hagyva csak az itt felvett események jelennek meg.' }

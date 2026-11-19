@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import main from '../partials/rolunk.html?raw';
+---
+<Base title='Rólunk – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='Ismerd meg a kassai 17.sz. II. Rákóczi Ferenc cserkészcsapatot: kik vagyunk, névadónk II. Rákóczi Ferenc, és csapatunk történelme 1992-től napjainkig.' path='/rolunk' pageCss='/css/rolunk.css' alts={{"hu": "/rolunk", "sk": "/sk/o-nas", "en": "/en/about-us"}}>
+<Fragment set:html={main} />
+</Base>

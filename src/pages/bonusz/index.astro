@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import main from '../../partials/bonusz.html?raw';
+---
+<Base title='Bónusz – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='Bónusz oldalak: felszerelési listák, nótafa generátor, cserkésztudás és archívum.' path='/bonusz' pageCss='/css/bonusz.css' alts={{"hu": "/bonusz", "sk": "/sk/bonus", "en": "/en/extras"}}>
+<Fragment set:html={main} />
+</Base>

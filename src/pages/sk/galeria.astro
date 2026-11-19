@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import raw from '../../partials/galeria_sk.html?raw';
+const fmtSk = (iso) => { const [y,m,d] = iso.split('-'); return `${d}. ${m}. ${y}`; };
+const fmtRange = (start, end) => (end && end !== start) ? `${fmtSk(start)} – ${fmtSk(end)}` : fmtSk(start);
+const all = (await getCollection('beszamolok')).sort((a,b)=>b.data.date.localeCompare(a.data.date));
+const tile = (b, i) => `
+<article class="gal-card" data-year="${b.data.date.slice(0,4)}"${i>=20?' data-older':''} data-reveal="" style="--rd:${(i%4)*60}ms">
+<figure class="gal-media m-0">${b.data.cover ? `<img src="${b.data.cover}" alt="${b.data.title}" loading="lazy" decoding="async">` : '<div class="ph-cover" role="img" aria-label="Titulná fotka albumu">titulná fotka</div>'}</figure>
+<div class="gal-body">
+<h3 class="font-display text-base font-semibold leading-snug text-ink"><a href="/sk/galeria/${b.id}" class="gal-link">${b.data.title}</a></h3>
+<p class="gal-meta"><time datetime="${b.data.date}">${fmtRange(b.data.date, b.data.endDate)}</time></p>
+</div>
+</article>`;
+const main = raw.replace('<!--TILES-->', all.map(tile).join('\n'));
+---
+<Base title="Galéria – 17. skautský zbor II. Rákóczi Ferenc" desc="Fotoalbumy z táborov, výprav a podujatí košického 17. skautského zboru II. Rákócziho Ferenca." path="/sk/galeria" lang="sk" pageCss="/css/galeria.css" pageJs="/js/galeria.js" alts={{"hu": "/galeria", "sk": "/sk/galeria", "en": "/en/gallery"}}>
+<Fragment set:html={main} />
+</Base>

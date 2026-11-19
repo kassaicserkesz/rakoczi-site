@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import main from '../../partials/kapcsolat_en.html?raw';
+---
+<Base title='Contact – II. Rákóczi Ferenc Scout Troop' desc='Contact the Hungarian scout troop of Košice: e-mail, phone and social media.' path='/en/contact' lang='en' pageCss='/css/kapcsolat.css' pageJs='/js/kapcsolat.js' alts={{"hu": "/kapcsolat", "sk": "/sk/kontakt", "en": "/en/contact"}}>
+<Fragment set:html={main} />
+</Base>

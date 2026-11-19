@@ -1,0 +1,31 @@
+<main id="main" tabindex="-1" class="outline-none">
+<section class="relative isolate">
+<div class="container-site hero-enter relative z-10 py-16 md:py-24">
+<p class="eyebrow text-pine/80"><span aria-hidden="true" class="tracking-normal">•—•</span> Bónusz</p>
+<h1 class="mt-5 max-w-3xl text-balance font-display text-2xl font-semibold text-pine md:text-3xl">Nótafa generátor</h1>
+<p class="mt-4 max-w-2xl text-pretty text-lg text-ink/80">Add meg, hány jelenetből áll a tábortűz, és összeállítjuk a nóták és jelenetek ívét: a tábortűz eleji vidám énekektől a közép és csendesebb dalokon át egészen a záró szeretetkörig.</p>
+</div>
+</section>
+<section class="border-t border-sand/40">
+<div class="container-site py-14 md:py-20">
+<div class="nf-card mx-auto" data-reveal="">
+<div class="nf-controls">
+<div>
+<label for="nf-num">Jelenetek száma</label>
+<input class="nf-num" id="nf-num" type="number" min="0" max="9" value="4" inputmode="numeric">
+</div>
+<button type="button" id="nf-gen" class="btn btn-ember"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.8" cy="17.6" r="2.7"></circle><circle cx="17" cy="15.6" r="2.7"></circle><path d="M9.5 17.6V6.2l10.2-2.1v11.5"></path></svg> Nótafa generálása</button>
+<span class="gal-note" id="nf-count"></span>
+</div>
+<div class="nf-curve" id="nf-curve">
+<svg viewBox="0 0 600 64" preserveAspectRatio="none" aria-hidden="true"></svg>
+<div class="nf-curve-lbl"><span>Vidám</span><span>Közép-vidám</span><span>Közép</span><span>Közép-szomorú</span><span>Szomorú</span><span>Szeretetkör</span></div>
+</div>
+<div class="nf-add-bar" id="nf-add-bar"></div>
+<div class="nf-list" id="nf-list">
+<p class="nf-empty">Állítsd be a jelenetek számát, és kattints a generálásra.</p>
+</div>
+</div>
+</div>
+</section>
+</main>

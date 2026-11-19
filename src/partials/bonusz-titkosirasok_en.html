@@ -1,0 +1,156 @@
+<main id="main" tabindex="-1" class="outline-none">
+<section class="relative isolate">
+<div class="container-site hero-enter relative z-10 py-16 md:py-24">
+<p class="eyebrow text-pine/80"><span aria-hidden="true" class="tracking-normal">•—•</span> Extras</p>
+<h1 class="mt-5 max-w-3xl text-balance font-display text-2xl font-semibold text-pine md:text-3xl">Secret codes</h1>
+<p class="mt-4 max-w-2xl text-pretty text-lg text-ink/80">Two classic scout cipher systems in one station: Székely–Hungarian runic script (rovás) and Morse code. Type your text, switch between the two, and see (or hear) how it works.</p>
+</div>
+</section>
+
+<section class="border-t border-sand/40">
+<div class="container-site py-14 md:py-20">
+<div class="max-w-3xl" data-reveal="">
+<p class="eyebrow text-pine/80"><span aria-hidden="true" class="tracking-normal">•—•</span> Choose a script</p>
+<h2 class="mt-4 font-display text-xl font-semibold text-pine md:text-2xl">Converter station</h2>
+<p class="mt-4 text-pretty text-base text-ink/80 md:text-lg">Rovás is the ancient Hungarian alphabet written from right to left, with dedicated glyphs for digraphs (gy, sz, cs…) and numbers. Morse code is a scouting classic – the station plays it with sound and a flashing light.</p>
+</div>
+<div class="tk-card mx-auto mt-10" style="max-width:52rem" data-reveal="">
+<div class="tk-seg" role="group" aria-label="Select script">
+<button type="button" data-mode="rovas" aria-pressed="true">Runic script</button>
+<button type="button" data-mode="morze" aria-pressed="false">Morse code</button>
+</div>
+<label class="tk-lbl" for="tk-in">Text</label>
+<textarea class="tk-in" id="tk-in" placeholder="E.g.: Jó munkát!" autocomplete="off" spellcheck="false"></textarea>
+<div class="tk-out tk-out-rovas" id="tk-out" data-empty="Runic script will appear here…" aria-live="polite"></div>
+<div class="tk-foot">
+<button type="button" id="tk-copy" class="btn-cal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
+<button type="button" id="tk-speak" class="btn-cal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5.5 6.5 9H3v6h3.5L11 18.5Z"></path><path d="M15 9.2a4.2 4.2 0 0 1 0 5.6M17.8 6.6a8 8 0 0 1 0 10.8"></path></svg> Speak in Hungarian</button>
+<div class="tk-morse-ctl" id="tk-morse-ctl" hidden>
+<button type="button" id="tk-play" class="btn btn-ember btn-sm"><svg class="tk-i-play" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M8 5.5v13l11-6.5Z"></path></svg><svg class="tk-i-stop" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="1.5"></rect></svg> <span class="tk-play-t">Play</span></button>
+<span class="tk-lamp" id="tk-lamp" aria-hidden="true"></span>
+<span class="tk-wpm-wrap"><label for="tk-wpm">Speed</label>
+<input type="range" class="tk-wpm" id="tk-wpm" min="5" max="25" step="1" value="12">
+<span class="tk-wpm-val"><span id="tk-wpm-val">12</span> WPM</span></span>
+<span class="tk-wpm-wrap"><label for="tk-vol">Volume</label>
+<input type="range" class="tk-wpm" id="tk-vol" min="0" max="100" step="1" value="70">
+<span class="tk-wpm-val"><span id="tk-vol-val">70</span>%</span></span>
+</div>
+<p class="tk-tts-note" id="tts-note">No Hungarian text-to-speech voice is installed on this device.</p>
+<p class="tk-hint" id="hint-rovas">The converter automatically detects Hungarian digraphs and converts numbers into runic numerals. To keep two letters separate at a word boundary (e.g. pác|só), place a <strong>|</strong> character between them.</p>
+<p class="tk-hint" id="hint-morze" hidden>One dot = dit, one dash = dah. There are 3 units of silence between letters and 7 between words; <strong>/</strong> marks a word boundary.</p>
+</div>
+<details class="tk-abc" open>
+<summary><span id="tk-abc-t">Runic alphabet</span> <svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.3 6 5.7 6-5.7"></path></svg></summary>
+<div id="abc-rovas">
+<p class="tk-abc-cap">Letters</p>
+<div class="tk-abc-grid">
+<span class="tk-pair"><span class="tk-lat">a</span><span class="tk-rg" dir="rtl">𐳀</span></span>
+<span class="tk-pair"><span class="tk-lat">á</span><span class="tk-rg" dir="rtl">𐳁</span></span>
+<span class="tk-pair"><span class="tk-lat">b</span><span class="tk-rg" dir="rtl">𐳂</span></span>
+<span class="tk-pair"><span class="tk-lat">c</span><span class="tk-rg" dir="rtl">𐳄</span></span>
+<span class="tk-pair"><span class="tk-lat">cs</span><span class="tk-rg" dir="rtl">𐳆</span></span>
+<span class="tk-pair"><span class="tk-lat">d</span><span class="tk-rg" dir="rtl">𐳇</span></span>
+<span class="tk-pair"><span class="tk-lat">dz</span><span class="tk-rg" dir="rtl">𐳇𐳯</span></span>
+<span class="tk-pair"><span class="tk-lat">dzs</span><span class="tk-rg" dir="rtl">𐳇𐳰</span></span>
+<span class="tk-pair"><span class="tk-lat">e</span><span class="tk-rg" dir="rtl">𐳉</span></span>
+<span class="tk-pair"><span class="tk-lat">é</span><span class="tk-rg" dir="rtl">𐳋</span></span>
+<span class="tk-pair"><span class="tk-lat">f</span><span class="tk-rg" dir="rtl">𐳌</span></span>
+<span class="tk-pair"><span class="tk-lat">g</span><span class="tk-rg" dir="rtl">𐳍</span></span>
+<span class="tk-pair"><span class="tk-lat">gy</span><span class="tk-rg" dir="rtl">𐳎</span></span>
+<span class="tk-pair"><span class="tk-lat">h</span><span class="tk-rg" dir="rtl">𐳏</span></span>
+<span class="tk-pair"><span class="tk-lat">i</span><span class="tk-rg" dir="rtl">𐳐</span></span>
+<span class="tk-pair"><span class="tk-lat">í</span><span class="tk-rg" dir="rtl">𐳑</span></span>
+<span class="tk-pair"><span class="tk-lat">j</span><span class="tk-rg" dir="rtl">𐳒</span></span>
+<span class="tk-pair"><span class="tk-lat">k</span><span class="tk-rg" dir="rtl">𐳓</span></span>
+<span class="tk-pair"><span class="tk-lat">l</span><span class="tk-rg" dir="rtl">𐳖</span></span>
+<span class="tk-pair"><span class="tk-lat">ly</span><span class="tk-rg" dir="rtl">𐳗</span></span>
+<span class="tk-pair"><span class="tk-lat">m</span><span class="tk-rg" dir="rtl">𐳘</span></span>
+<span class="tk-pair"><span class="tk-lat">n</span><span class="tk-rg" dir="rtl">𐳙</span></span>
+<span class="tk-pair"><span class="tk-lat">ny</span><span class="tk-rg" dir="rtl">𐳚</span></span>
+<span class="tk-pair"><span class="tk-lat">o</span><span class="tk-rg" dir="rtl">𐳛</span></span>
+<span class="tk-pair"><span class="tk-lat">ó</span><span class="tk-rg" dir="rtl">𐳜</span></span>
+<span class="tk-pair"><span class="tk-lat">ö</span><span class="tk-rg" dir="rtl">𐳝</span></span>
+<span class="tk-pair"><span class="tk-lat">ő</span><span class="tk-rg" dir="rtl">𐳟</span></span>
+<span class="tk-pair"><span class="tk-lat">p</span><span class="tk-rg" dir="rtl">𐳠</span></span>
+<span class="tk-pair"><span class="tk-lat">r</span><span class="tk-rg" dir="rtl">𐳢</span></span>
+<span class="tk-pair"><span class="tk-lat">s</span><span class="tk-rg" dir="rtl">𐳤</span></span>
+<span class="tk-pair"><span class="tk-lat">sz</span><span class="tk-rg" dir="rtl">𐳥</span></span>
+<span class="tk-pair"><span class="tk-lat">t</span><span class="tk-rg" dir="rtl">𐳦</span></span>
+<span class="tk-pair"><span class="tk-lat">ty</span><span class="tk-rg" dir="rtl">𐳨</span></span>
+<span class="tk-pair"><span class="tk-lat">u</span><span class="tk-rg" dir="rtl">𐳪</span></span>
+<span class="tk-pair"><span class="tk-lat">ú</span><span class="tk-rg" dir="rtl">𐳫</span></span>
+<span class="tk-pair"><span class="tk-lat">ü</span><span class="tk-rg" dir="rtl">𐳬</span></span>
+<span class="tk-pair"><span class="tk-lat">ű</span><span class="tk-rg" dir="rtl">𐳭</span></span>
+<span class="tk-pair"><span class="tk-lat">v</span><span class="tk-rg" dir="rtl">𐳮</span></span>
+<span class="tk-pair"><span class="tk-lat">z</span><span class="tk-rg" dir="rtl">𐳯</span></span>
+<span class="tk-pair"><span class="tk-lat">zs</span><span class="tk-rg" dir="rtl">𐳰</span></span>
+</div>
+<p class="tk-abc-cap">Numbers (written by adding values: 17 = 10+5+1+1)</p>
+<div class="tk-abc-grid">
+<span class="tk-pair"><span class="tk-lat">1</span><span class="tk-rg" dir="rtl">𐳺</span></span>
+<span class="tk-pair"><span class="tk-lat">5</span><span class="tk-rg" dir="rtl">𐳻</span></span>
+<span class="tk-pair"><span class="tk-lat">10</span><span class="tk-rg" dir="rtl">𐳼</span></span>
+<span class="tk-pair"><span class="tk-lat">50</span><span class="tk-rg" dir="rtl">𐳽</span></span>
+<span class="tk-pair"><span class="tk-lat">100</span><span class="tk-rg" dir="rtl">𐳾</span></span>
+<span class="tk-pair"><span class="tk-lat">1000</span><span class="tk-rg" dir="rtl">𐳿</span></span>
+</div>
+</div>
+<div id="abc-morze" hidden>
+<p class="tk-abc-cap">Letters</p>
+<div class="tk-abc-grid tk-abc-morse">
+<span class="tk-pair"><span class="tk-lat">a</span><span class="tk-mc">.-</span></span>
+<span class="tk-pair"><span class="tk-lat">á</span><span class="tk-mc">.--.-</span></span>
+<span class="tk-pair"><span class="tk-lat">b</span><span class="tk-mc">-...</span></span>
+<span class="tk-pair"><span class="tk-lat">c</span><span class="tk-mc">-.-.</span></span>
+<span class="tk-pair"><span class="tk-lat">d</span><span class="tk-mc">-..</span></span>
+<span class="tk-pair"><span class="tk-lat">e</span><span class="tk-mc">.</span></span>
+<span class="tk-pair"><span class="tk-lat">é</span><span class="tk-mc">..-..</span></span>
+<span class="tk-pair"><span class="tk-lat">f</span><span class="tk-mc">..-.</span></span>
+<span class="tk-pair"><span class="tk-lat">g</span><span class="tk-mc">--.</span></span>
+<span class="tk-pair"><span class="tk-lat">h</span><span class="tk-mc">....</span></span>
+<span class="tk-pair"><span class="tk-lat">i</span><span class="tk-mc">..</span></span>
+<span class="tk-pair"><span class="tk-lat">í</span><span class="tk-mc">..</span></span>
+<span class="tk-pair"><span class="tk-lat">j</span><span class="tk-mc">.---</span></span>
+<span class="tk-pair"><span class="tk-lat">k</span><span class="tk-mc">-.-</span></span>
+<span class="tk-pair"><span class="tk-lat">l</span><span class="tk-mc">.-..</span></span>
+<span class="tk-pair"><span class="tk-lat">m</span><span class="tk-mc">--</span></span>
+<span class="tk-pair"><span class="tk-lat">n</span><span class="tk-mc">-.</span></span>
+<span class="tk-pair"><span class="tk-lat">o</span><span class="tk-mc">---</span></span>
+<span class="tk-pair"><span class="tk-lat">ó</span><span class="tk-mc">---</span></span>
+<span class="tk-pair"><span class="tk-lat">ö</span><span class="tk-mc">---.</span></span>
+<span class="tk-pair"><span class="tk-lat">ő</span><span class="tk-mc">---.</span></span>
+<span class="tk-pair"><span class="tk-lat">p</span><span class="tk-mc">.--.</span></span>
+<span class="tk-pair"><span class="tk-lat">q</span><span class="tk-mc">--.-</span></span>
+<span class="tk-pair"><span class="tk-lat">r</span><span class="tk-mc">.-.</span></span>
+<span class="tk-pair"><span class="tk-lat">s</span><span class="tk-mc">...</span></span>
+<span class="tk-pair"><span class="tk-lat">t</span><span class="tk-mc">-</span></span>
+<span class="tk-pair"><span class="tk-lat">u</span><span class="tk-mc">..-</span></span>
+<span class="tk-pair"><span class="tk-lat">ú</span><span class="tk-mc">..-</span></span>
+<span class="tk-pair"><span class="tk-lat">ü</span><span class="tk-mc">..--</span></span>
+<span class="tk-pair"><span class="tk-lat">ű</span><span class="tk-mc">..--</span></span>
+<span class="tk-pair"><span class="tk-lat">v</span><span class="tk-mc">...-</span></span>
+<span class="tk-pair"><span class="tk-lat">w</span><span class="tk-mc">.--</span></span>
+<span class="tk-pair"><span class="tk-lat">x</span><span class="tk-mc">-..-</span></span>
+<span class="tk-pair"><span class="tk-lat">y</span><span class="tk-mc">-.--</span></span>
+<span class="tk-pair"><span class="tk-lat">z</span><span class="tk-mc">--..</span></span>
+</div>
+<p class="tk-abc-cap">Numbers</p>
+<div class="tk-abc-grid tk-abc-morse">
+<span class="tk-pair"><span class="tk-lat">0</span><span class="tk-mc">-----</span></span>
+<span class="tk-pair"><span class="tk-lat">1</span><span class="tk-mc">.----</span></span>
+<span class="tk-pair"><span class="tk-lat">2</span><span class="tk-mc">..---</span></span>
+<span class="tk-pair"><span class="tk-lat">3</span><span class="tk-mc">...--</span></span>
+<span class="tk-pair"><span class="tk-lat">4</span><span class="tk-mc">....-</span></span>
+<span class="tk-pair"><span class="tk-lat">5</span><span class="tk-mc">.....</span></span>
+<span class="tk-pair"><span class="tk-lat">6</span><span class="tk-mc">-....</span></span>
+<span class="tk-pair"><span class="tk-lat">7</span><span class="tk-mc">--...</span></span>
+<span class="tk-pair"><span class="tk-lat">8</span><span class="tk-mc">---..</span></span>
+<span class="tk-pair"><span class="tk-lat">9</span><span class="tk-mc">----.</span></span>
+</div>
+</div>
+</details>
+</div>
+</div>
+</section>
+
+</main>

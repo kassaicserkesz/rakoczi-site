@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import main from '../partials/sajto.html?raw';
+---
+<Base title='Sajtó – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='Sajtóanyagok a kassai 17.sz. II. Rákóczi Ferenc cserkészcsapatról: rövid bemutatkozás, letölthető logók és fotók, sajtókapcsolat.' path='/sajto' pageCss='/css/sajto.css' pageJs='/js/sajto.js' alts={{"hu": "/sajto", "sk": "/sk/pre-media", "en": "/en/press"}}>
+<Fragment set:html={main} />
+</Base>

@@ -1,0 +1,70 @@
+<main id="main" tabindex="-1" class="outline-none">
+
+<section class="relative isolate" style="z-index:25">
+<div class="container-site hero-enter relative z-10 py-16 md:py-24">
+<h1 class="max-w-3xl text-balance font-display text-2xl font-semibold text-pine md:text-3xl">Podujatia</h1>
+<p class="mt-4 max-w-2xl text-pretty text-lg text-ink/80">Nenechaj si ujsť naše najbližšie podujatia. Pridaj si ich do svojho kalendára.</p>
+<div class="sub-row mt-8 flex flex-wrap items-center gap-3">
+<div class="sub-drop" id="sub-drop">
+<button type="button" id="sub-btn" class="btn btn-outline-pine" aria-expanded="false" aria-controls="drop-sub" aria-haspopup="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10.5h17"></path><path d="M12 13.5v5M9.5 16h5"></path></svg> Pridať kalendár <span class="sub-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.3 6 5.7 6-5.7"></path></svg></span></button>
+<div id="drop-sub" class="sub-menu" role="menu" aria-label="Pridať kalendár">
+<p class="sub-note">Vyber si, kde používaš kalendár</p>
+<a href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fkassaicserkesz.sk%2Fesemenyek%2Fnaptar.ics" target="_blank" rel="noopener noreferrer" class="sub-item" role="menuitem">
+<span class="sub-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10.5h17"></path></svg></span>
+<span><span class="t">Google Kalendár</span><br><span class="d">Jedným kliknutím sa ti zobrazí oddielový kalendár a bude sa sám aktualizovať</span></span>
+</a>
+<a href="webcal://kassaicserkesz.sk/esemenyek/naptar.ics" class="sub-item" role="menuitem">
+<span class="sub-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5v5h-5"></path><path d="M4 19v-5h5"></path><path d="M19.5 10a8 8 0 0 0-14-3.5M4.5 14a8 8 0 0 0 14 3.5"></path></svg></span>
+<span><span class="t">Apple / Outlook kalendár</span><br><span class="d">Jedným kliknutím sa oddielový kalendár pridá a bude sa sám aktualizovať</span></span>
+</a>
+<a href="/esemenyek/naptar.ics" download="" class="sub-item" role="menuitem">
+<span class="sub-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5"></path><path d="M4.5 19.5h15"></path></svg></span>
+<span><span class="t">Stiahnuť súbor kalendára (.ics)</span><br><span class="d">Jednorazové uloženie – stiahnutý súbor otvorí akákoľvek kalendárová aplikácia</span></span>
+</a>
+</div>
+</div>
+</div>
+<p class="sub-hint mt-4">Odoberaný kalendár sa automaticky aktualizuje pri pridaní nového podujatia.</p>
+</div>
+</section>
+
+<section class="border-t border-sand/40">
+<div class="container-site py-14 md:py-20" data-reveal="">
+<div class="cal-wrap">
+<div class="cal-head">
+<div class="cal-picker">
+<label class="sr-only" for="cal-year">Rok</label>
+<select id="cal-year" class="cal-select"><option value="2025">2025</option><option value="2026" selected>2026</option></select>
+<label class="sr-only" for="cal-month-sel">Mesiac</label>
+<select id="cal-month-sel" class="cal-select"><option value="1">január</option><option value="2">február</option><option value="3">marec</option><option value="4">apríl</option><option value="5">máj</option><option value="6">jún</option><option value="7" selected>júl</option><option value="8">august</option><option value="9">september</option><option value="10">október</option><option value="11">november</option><option value="12">december</option></select>
+</div>
+<div class="cal-ctrls">
+<button type="button" id="cal-prev" class="cal-nav" aria-label="Predchádzajúci mesiac"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"></path></svg></button>
+<button type="button" id="cal-next" class="cal-nav" aria-label="Nasledujúci mesiac"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"></path></svg></button>
+</div>
+</div>
+<div class="cal-dow" aria-hidden="true"><span>Po</span><span>Ut</span><span>St</span><span>Št</span><span>Pi</span><span>So</span><span>Ne</span></div>
+<!--MONTHS-->
+<div class="cal-legend">
+<span class="lg"><span class="sw" style="background:var(--color-pine)"></span> Podujatie</span>
+<span class="lg"><span class="sw" style="background:color-mix(in oklab,var(--color-pine) 55%,var(--color-sand))"></span> Minulé</span>
+<span class="lg"><span class="sw" style="background:var(--color-ember);border-radius:999px"></span> Dnes</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="border-t border-sand/40">
+<div class="container-site py-16 md:py-24">
+<div class="flex flex-wrap items-end justify-between gap-4" data-reveal="">
+<div>
+<p class="eyebrow text-pine/80"><span aria-hidden="true" class="tracking-normal">•—•</span> Najbližšie podujatia</p>
+<h2 class="mt-4 font-display text-xl font-semibold text-pine md:text-2xl">Kedy sa stretneme nabudúce?</h2>
+</div>
+<a href="/sk/galeria" class="link-arrow">Staršie podujatia v Galérii <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15m-6.5-6.5L19.5 12 13 18.5"></path></svg></a>
+</div>
+<div class="mt-10 flex flex-col gap-4"><!--SIGN--></div>
+</div>
+</section>
+
+</main>

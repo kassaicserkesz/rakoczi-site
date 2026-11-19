@@ -1,0 +1,13 @@
+/* Adatvédelmi oldal */
+.pp{max-width:46rem}
+.pp h2{font-family:var(--font-display);font-weight:600;font-size:var(--text-xl);color:var(--color-pine);text-wrap:balance}
+.pp h3{margin-top:1.4rem;font-family:var(--font-display);font-weight:600;font-size:var(--text-base);color:var(--color-ink)}
+.pp p{margin-top:.8rem;font-size:var(--text-base);line-height:1.65;color:#22240fd9;text-wrap:pretty}
+.pp ul{margin-top:.8rem;padding-left:1.3rem;list-style:disc;display:flex;flex-direction:column;gap:.45rem;font-size:var(--text-base);line-height:1.6;color:#22240fd9}
+.pp a{color:var(--color-pine);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#4a522355}
+.pp a:hover{text-decoration-color:currentColor}
+.pp .ph-mark{background:#e9b44c33;border:1px dashed #b98a2e99;border-radius:.3rem;padding:0 .35rem;font-family:var(--font-mono);font-size:.85em;color:#7a5b16}
+[data-theme=dark] .pp p,[data-theme=dark] .pp ul{color:#f4f2e9d9}
+[data-theme=dark] .pp h3{color:#f4f2e9}
+[data-theme=dark] .pp a{text-decoration-color:#f4f2e955}
+[data-theme=dark] .pp .ph-mark{background:#e9b44c22;color:#e9c87a}

@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { getAllEvents } from '../../lib/events.js';
+import raw from '../../partials/esemenyek_en.html?raw';
+
+const EN_MON = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const EN_FULL = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+const fmtLong = (ev) => {
+  const [y,m,d] = ev.data.start.split('-');
+  let s = `${+d} ${EN_MON[+m]} ${y}`;
+  if (ev.data.end && ev.data.end !== ev.data.start) {
+    const [ey,em,ed] = ev.data.end.split('-');
+    s = (+em !== +m) ? `${+d} ${EN_MON[+m]} – ${+ed} ${EN_MON[+em]} ${y}` : `${+d}–${+ed} ${EN_MON[+m]} ${y}`;
+  }
+  if (ev.data.time) s += ` · ${ev.data.time}`;
+  return s;
+};
+const plate = (ev) => {
+  const [y,m,d] = ev.data.start.split('-');
+  const hasEnd = ev.data.end && ev.data.end !== ev.data.start;
+  const day = hasEnd ? `${+d}–${+ev.data.end.split('-')[2]}` : `${+d}`;
+  const rng = hasEnd ? ' dp-range' : '';
+  return `<p class="date-plate"><span class="dp-month">${EN_MON[+m]}</span><span class="dp-day${rng}">${day}</span></p>`;
+};
+const PIN = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>';
+const CALI = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10.5h17"></path></svg>';
+const signRow = (ev, i) => `
+<article class="signpost" data-reveal="" style="--rd:${i*110}ms">
+<div class="signpost-board event-row relative">
+${plate(ev)}
+<div class="min-w-0">
+<h3 class="font-display text-lg font-semibold leading-snug text-ink"><a href="/en/events" class="event-link">${ev.data.title}</a></h3>
+<p class="mt-1 text-sm text-ink/75">${(ev.body||'').trim()}</p>
+<p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.13em] text-ink/70">
+${ev.data.place ? `<span class="inline-flex items-center gap-1.5">${PIN} ${ev.data.place}</span>` : ''}
+<span class="hidden sm:inline">${fmtLong(ev)}</span>
+</p>
+</div>
+${ev.data.ics ? `<a href="${ev.data.ics}" download class="btn-cal relative z-10 justify-self-start md:justify-self-end" title="The file opens in your calendar app and saves the event" aria-label="Add to calendar: ${ev.data.title}">${CALI} Add to calendar</a>` : ''}
+</div>
+</article>`;
+
+const besz = await getCollection('beszamolok');
+const eseAll = (await getAllEvents()).sort((a,b) => a.data.start.localeCompare(b.data.start));
+const today = new Date().toISOString().slice(0,10);
+const upcoming = eseAll.filter(e=>(e.data.end||e.data.start)>=today).slice(0,6);
+
+const events = [
+  ...eseAll.map(e=>({
+    s: e.data.start,
+    e: e.data.end || e.data.start,
+    t: e.data.title,
+    past: (e.data.end || e.data.start) < today
+  })),
+  ...besz.map(b=>({
+    s: b.data.date,
+    e: b.data.endDate || b.data.date,
+    t: b.data.title,
+    past: (b.data.endDate || b.data.date) < today
+  })),
+].sort((a,b) => a.s.localeCompare(b.s));
+
+const pad = n => String(n).padStart(2,'0');
+const todayD = new Date();
+const todayY = todayD.getUTCFullYear(), todayM = todayD.getUTCMonth()+1;
+function monthBlock(y, m) {
+  const first = new Date(Date.UTC(y, m-1, 1));
+  const startDow = (first.getUTCDay()+6)%7;
+  const gridStart = new Date(first); gridStart.setUTCDate(1-startDow);
+  const dim = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  const weeks = Math.ceil((startDow+dim)/7);
+  let cells = '';
+  for (let i=0;i<weeks*7;i++) {
+    const d = new Date(gridStart); d.setUTCDate(gridStart.getUTCDate()+i);
+    const iso = d.toISOString().slice(0,10);
+    const out = (d.getUTCMonth()+1)!==m;
+    const isToday = iso===today && !out;
+    let pills = '';
+    if (!out) for (const ev of events) if (ev.s<=iso && iso<=ev.e) {
+      const firstLast = (iso===ev.s || iso===ev.e);
+      const cls = (firstLast ? '' : ' cal-cont') + (ev.past ? ' cal-past' : '');
+      pills += `<span class="cal-pill${cls}" title="${ev.t}"><span class="cal-pill-t">${ev.t}</span></span>`;
+    }
+    cells += `<div class="cal-cell${out?' cal-out':''}${isToday?' cal-today':''}"><span class="cal-daynum">${d.getUTCDate()}</span>${pills}</div>`;
+  }
+  const hidden = (y===todayY && m===todayM) ? '' : ' hidden';
+  return `<div class="cal-month" id="m-${y}-${pad(m)}" data-label="${EN_FULL[m]} ${y}"${hidden}><div class="cal-grid">${cells}</div></div>`;
+}
+
+const YEARS_BACK = 1, YEARS_FWD = 4;
+const calYears = [];
+for (let y = todayY - YEARS_BACK; y <= todayY + YEARS_FWD; y++) calYears.push(y);
+let months = '';
+for (const y of calYears) for (let m=1;m<=12;m++) months += monthBlock(y,m);
+const yearOpts = calYears.map(y => `<option value="${y}"${y===todayY?' selected':''}>${y}</option>`).join('');
+const monthOpts = EN_FULL.slice(1).map((name,i) => {
+  const m = i+1;
+  return `<option value="${m}"${m===todayM?' selected':''}>${name}</option>`;
+}).join('');
+const main = raw
+  .replace('<!--SIGN-->', upcoming.slice(0,3).map(signRow).join('\n'))
+  .replace('<!--MONTHS-->', months)
+  .replace(/<select id="cal-year" class="cal-select">[\s\S]*?<\/select>/, `<select id="cal-year" class="cal-select">${yearOpts}</select>`)
+  .replace(/<select id="cal-month-sel" class="cal-select">[\s\S]*?<\/select>/, `<select id="cal-month-sel" class="cal-select">${monthOpts}</select>`);
+---
+<Base title="Events – II. Rákóczi Ferenc Scout Troop" desc="Event calendar of the 17th II. Rákóczi Ferenc Scout Troop in Košice: patrol meetings, hikes and camps. Subscribe to our calendar." path="/en/events" lang="en" pageCss="/css/esemenyek.css" pageJs="/js/esemenyek.js" alts={{"hu": "/esemenyek", "sk": "/sk/podujatia", "en": "/en/events"}}>
+<Fragment set:html={main} />
+</Base>

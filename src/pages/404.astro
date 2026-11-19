@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import main from '../partials/404.html?raw';
+---
+<Base title='Az oldal nem található – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='A keresett oldal nem található. 17.sz. II. Rákóczi Ferenc cserkészcsapat, Kassa.' path='/404' pageCss='/css/404.css' alts={{"hu": "/404", "sk": "/sk/404", "en": "/en/404"}}>
+<Fragment set:html={main} />
+</Base>

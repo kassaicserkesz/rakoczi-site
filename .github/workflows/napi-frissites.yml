@@ -1,0 +1,18 @@
+name: Napi újraépítés (Google Naptár szinkron)
+on:
+  schedule:
+    - cron: '0 4 * * *'   # minden hajnalban (04:00 UTC)
+  workflow_dispatch: {}    # kézzel is indítható a GitHub Actions fülről
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloudflare Pages update
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "A CF_DEPLOY_HOOK titok nincs beallitva - lasd ATADAS.md. Most nem tortent semmi."
+            exit 0
+          fi
+          curl -sS -X POST "$HOOK" && echo "Ujraepites elinditva."

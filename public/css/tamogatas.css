@@ -1,0 +1,202 @@
+/* ── Oak & Honey kiegészítő réteg ── */
+#main{background-color:var(--color-paper)}
+/* Címsorok, gombfeliratok, logó: Bricolage Grotesque 700 (h1: 800) */
+.font-display.font-semibold{font-weight:700}
+h1.font-display{font-weight:800}
+.btn,.btn-cal{font-family:var(--font-display);font-weight:700}
+.date-plate .dp-day{font-weight:700}
+/* Fókuszjelzés sötét (olíva) sávokon */
+.bg-pine :focus-visible,footer :focus-visible{outline-color:var(--color-paper)}
+/* Fejléc: Csatlakozás legördülő menü */
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:inline-flex;align-items:center;justify-content:center;width:1.6rem;height:2rem;margin-left:-.35rem;border-radius:.375rem;color:var(--color-pine);transition:background-color .18s}
+.nav-drop-toggle:hover{background:#4a52230d}
+.nav-drop-toggle svg{transition:transform .18s}
+.nav-drop.open .nav-drop-toggle svg{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:calc(100% + .5rem);left:0;z-index:60;min-width:11.5rem;display:none;flex-direction:column;gap:.15rem;padding:.4rem;background:#fff;border:1px solid #cbc79eb3;border-radius:.65rem;box-shadow:0 18px 34px -16px #22240f59,0 3px 8px #22240f1f}
+.nav-drop.open .nav-drop-menu{display:flex}
+.nav-drop-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .7rem;border-radius:.5rem;font-size:var(--text-sm);font-weight:500;color:#22240fd9;transition:background-color .15s,color .15s}
+.nav-drop-item:hover{background:#4a52230d;color:var(--color-pine)}
+/* Mobil almenü behúzása */
+.drawer-sub{margin-left:2.55rem;padding-top:.55rem;padding-bottom:.55rem;font-size:.9375rem}.mdrop-menu{display:flex;flex-direction:column;gap:.25rem}.mdrop-menu[hidden]{display:none}.mdrop-chevron{transition:transform .18s}.mdrop-toggle[aria-expanded="true"] .mdrop-chevron{transform:rotate(180deg)}
+/* Kitöltött olíva gomb (pl. Bejelentkezés) */
+.btn-pine{background:var(--color-pine);color:var(--color-paper)}
+.btn-pine:hover{background:var(--color-pine-deep);transform:translateY(-1px)}
+/* Egy soros fejléc: körvonalas belépés-ikon, ráhúzáskor olívazöldre tölt */
+.btn-login-icon{display:inline-flex;align-items:center;justify-content:center;width:2.35rem;height:2.35rem;border-radius:.55rem;border:1px solid #cbc79eb3;color:var(--color-pine);background:transparent;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.btn-login-icon:hover,.btn-login-icon:focus-visible{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper);box-shadow:0 8px 18px -10px #4a5223cc}
+.btn-login-icon:active{background:var(--color-pine-deep);border-color:var(--color-pine-deep);color:var(--color-paper)}
+/* Kétsoros fejléc — második sor: fő navigáció, ikonokkal */
+.ribnav{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .56rem;border-radius:.5rem;font-size:var(--text-sm);font-weight:500;color:#22240fcc;white-space:nowrap;transition:background-color .15s,color .15s}
+.ribnav:hover{background:#4a52230d;color:var(--color-pine)}
+.rib-nav-row .nav-drop-menu{top:calc(100% - .1rem)}
+/* „Aktuális" sáv kártyái */
+.akt-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+@media (min-width:40rem){.akt-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.akt-grid{grid-template-columns:repeat(3,1fr)}}
+.akt-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:.8rem;box-shadow:0 16px 30px -16px #0d0f0466,0 2px 6px #0d0f0426;transition:transform .22s,box-shadow .22s}
+.akt-card:hover{transform:translateY(-4px);box-shadow:0 24px 40px -18px #0d0f0480,0 3px 8px #0d0f0433}
+.akt-media{margin:0;aspect-ratio:409/222;overflow:hidden;border-radius:.8rem .8rem 0 0;border-bottom:1px solid var(--color-sand)}
+.akt-media img{display:block;width:100%;height:100%;object-fit:cover}
+.akt-body{display:flex;flex:1;flex-direction:column;padding:1.15rem 1.25rem 1.25rem}
+.akt-card:hover .akt-link{color:var(--color-pine)}
+.akt-link:after{content:"";position:absolute;inset:0}
+.akt-link:focus-visible{outline:none}
+.akt-link:focus-visible:after{outline:2px solid var(--color-ember);outline-offset:3px;border-radius:.85rem}
+.akt-date{margin-top:auto;padding-top:1rem;font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240fb3}
+/* Link sötét sávon: méz */
+.link-arrow-dark{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--color-ember);text-underline-offset:4px}
+.link-arrow-dark:hover{color:var(--color-paper);text-decoration:underline}
+
+
+/* ── Komponensek a site.css-ből (chip, article-body) ── */
+.chip{border:1.5px solid #cbc79ecc;align-items:center;gap:.35rem;display:inline-flex;color:#22240fc7;border-radius:999px;padding:.32rem .8rem;font-size:.8rem;font-weight:550;cursor:pointer;background:0 0;transition:color .15s,border-color .15s,background-color .15s;text-decoration:none}
+.chip:hover{border-color:var(--color-pine);color:var(--color-pine)}
+.chip[aria-pressed=true]{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper)}
+.article-body{color:#22240fd9}
+.article-body>*+*{margin-top:.9em}
+.article-body h2,.article-body h3{font-family:var(--font-display);color:var(--color-pine);margin-top:1.6em;font-weight:600}
+.article-body h2{font-size:1.25rem}
+.article-body h3{font-size:1.05rem}
+.article-body ul{padding-left:.2rem;list-style:none}
+.article-body ul>li{margin-top:.4em;padding-left:1.35rem;position:relative}
+.article-body ul>li:before{content:"•—•";font-family:var(--font-mono);letter-spacing:.06em;color:#4a5223b3;font-size:.62em;position:absolute;top:.18em;left:0}
+.article-body strong{color:var(--color-ink)}
+.article-body a{color:var(--color-sky);text-underline-offset:4px}
+.article-body a:hover{text-decoration:underline}
+
+
+/* ── UX-finomítások (Dani visszajelzései nyomán) ── */
+button:not([disabled]){cursor:pointer}
+details[open] > *:not(summary){animation:d-open .22s ease}
+@keyframes d-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){details[open] > *:not(summary){animation:none}}
+.no-reveal .will-reveal{opacity:1!important;transform:none!important;transition:none!important}
+.no-reveal .hero-enter>*{animation:none!important;opacity:1!important;transform:none!important}
+@media (min-width:64rem){header a.btn.btn-ember.btn-sm{min-width:var(--support-btn-w,9.75rem);justify-content:center}}
+/* ── Hiányzó utility-k pótlása (a v4 buildből kimaradtak) ── */
+.m-0{margin:0}
+.flex-1{flex:1 1 0%}
+.pt-8{padding-top:2rem}
+.bg-pine\/5{background-color:color-mix(in oklab,var(--color-pine)5%,transparent)}
+@media (min-width:64rem){.lg\:inline-flex{display:inline-flex}}
+.ribnav[aria-current=page]{color:var(--color-pine);background:#4a52230d}
+.nav-drop-item{white-space:nowrap}
+
+
+/* ── Támogatás oldal réteg ── */
+.gal-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240f8c}
+.ph-mark{color:#b3541e;background:#e0a62e26;border-radius:.25rem;padding:.05rem .35rem}
+/* adventure trail */
+.adv-band{position:relative;height:8rem;margin-bottom:.4rem;display:none}
+@media (min-width:64rem){.adv-band{display:block}}
+.adv-band svg{position:absolute;inset:0;width:100%;height:100%}
+.adv-node{position:absolute;transform:translate(-50%,-50%);display:flex;width:3rem;height:3rem;align-items:center;justify-content:center;border-radius:999px;border:3px solid var(--color-paper);background:var(--color-pine);color:var(--color-paper);box-shadow:0 10px 20px -10px #4a5223a6,0 0 0 5px var(--color-paper)}
+.adv-grid{display:grid;gap:1.4rem;grid-template-columns:1fr}
+@media (min-width:48rem){.adv-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.adv-stop{position:relative;background:#fff;border:1px solid #cbc79e59;border-radius:.8rem;box-shadow:0 10px 22px -16px #0d0f0440,0 2px 5px #0d0f041a;padding:1.4rem 1.5rem;text-align:center}
+.adv-amt{font-family:var(--font-display);font-weight:800;font-size:2rem;letter-spacing:-.015em;color:var(--color-pine);line-height:1.1}
+.adv-stop p{margin-top:.5rem;font-size:var(--text-sm);color:#22240fbf}
+.adv-stop p strong{color:var(--color-ink)}
+.adv-mnode{display:flex;width:2.6rem;height:2.6rem;margin:0 auto 1rem;align-items:center;justify-content:center;border-radius:999px;background:var(--color-pine);color:var(--color-paper)}
+@media (min-width:48rem){.adv-mnode{display:none}}
+.adv-grid .adv-stop:not(:first-child)::before{content:"";position:absolute;top:-1.4rem;left:50%;height:1.4rem;border-left:2.5px dashed #4a522366}
+@media (min-width:48rem){.adv-grid .adv-stop:not(:first-child)::before{display:none}}
+/* donation card */
+/* ── adománymérő ── */
+.dm-card{max-width:44rem;background:#fff;border:1px solid #cbc79e59;border-radius:.8rem;box-shadow:0 10px 22px -16px #0d0f0440,0 2px 5px #0d0f041a;padding:1.35rem 1.5rem 1.25rem}
+.dm-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 1.2rem}
+.dm-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#22240f8c}
+.dm-flag{color:var(--color-pine);letter-spacing:normal}
+.dm-nums{font-family:var(--font-display);font-size:var(--text-lg);color:#22240fb3}
+.dm-nums strong{font-weight:700;color:var(--color-pine)}
+.dm-sep{color:#22240f66}
+.dm-bar{margin-top:.8rem;height:1.05rem;border-radius:999px;background:#4a522314;overflow:hidden}
+.dm-fill{display:flex;align-items:center;justify-content:flex-end;height:100%;min-width:2.2rem;border-radius:999px;background:var(--color-pine);transition:width .6s cubic-bezier(.22,.65,.3,1)}
+.dm-pct{padding-right:.55rem;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--color-paper)}
+.dm-note{margin-top:.65rem;font-size:var(--text-sm);color:#22240f8c}
+.don-card{background:#fff;border:1px solid #cbc79e59;border-radius:1rem;box-shadow:0 24px 44px -22px #22240f42,0 4px 10px #22240f14;padding:1.9rem 2rem;display:grid;gap:2rem}
+@media (min-width:56rem){.don-card{grid-template-columns:5fr 4fr;gap:0}
+.don-left{padding-right:2.4rem}
+.don-right{border-left:1px solid #cbc79e59;padding-left:2.4rem}}
+.don-right .lbl2{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#4a5223cc}
+.don-list{margin-top:.9rem;list-style:none;padding:0}
+.don-list li{position:relative;padding-left:1.4rem;margin-top:.55em;font-size:var(--text-sm);color:#22240fbf}
+.don-list li:before{content:"•—•";font-family:var(--font-mono);letter-spacing:.06em;color:#4a5223b3;font-size:.6em;position:absolute;top:.4em;left:0}
+.seg{display:inline-flex;border:1.5px solid var(--color-sand);border-radius:999px;padding:.25rem;gap:.25rem}
+.seg button{border-radius:999px;padding:.5rem 1.2rem;font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:500;color:#22240f99;transition:background-color .15s,color .15s}
+.seg button[aria-pressed=true]{background:var(--color-pine);color:var(--color-paper)}
+html[data-theme=dark] .seg button[aria-pressed=true]{background:#f4f2e9;color:#4a5223}
+html[data-theme=dark] .amt[aria-pressed=true]{color:#4a5223}
+.amt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:1.3rem}
+.amt{border:1.5px solid #cbc79e99;border-radius:.65rem;padding:.85rem .4rem;text-align:center;font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--color-ink);transition:border-color .15s,background-color .15s,color .15s}
+.amt:hover{border-color:var(--color-pine);color:var(--color-pine)}
+.amt[aria-pressed=true]{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper)}
+.amt .per{display:block;font-family:var(--font-mono);font-weight:500;font-size:9px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-top:.15rem}
+.don-card .btn{width:100%;margin-top:1.4rem}
+.don-secure{display:flex;align-items:center;justify-content:center;gap:.45rem;margin-top:.9rem;font-family:var(--font-mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#22240f8c}
+.don-alt{margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid #cbc79e59}
+.don-alt .lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22240f8c}
+.iban-row{display:flex;align-items:center;gap:.7rem;margin-top:.5rem;flex-wrap:wrap}
+.iban{font-family:var(--font-mono);font-size:.85rem;letter-spacing:.06em;background:#f7f6ef;border:1px solid #cbc79e80;border-radius:.5rem;padding:.55rem .8rem;color:#22240fd9}
+/* 2% */
+.pct-grid{display:grid;gap:2.25rem;margin-top:2.5rem}
+@media (min-width:48rem){.pct-grid{grid-template-columns:3fr 2fr;gap:3rem;align-items:start}}
+.step2{display:flex;gap:1rem;align-items:flex-start}
+.step2+.step2{margin-top:1.4rem}
+.step2 .n{flex:0 0 auto;display:flex;width:2.4rem;height:2.4rem;align-items:center;justify-content:center;border-radius:.5rem;background:var(--color-pine);color:var(--color-paper);font-family:var(--font-display);font-weight:700;font-size:1.05rem}
+.step2 h3{font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--color-ink)}
+.step2 p{margin-top:.25rem;font-size:var(--text-sm);color:#22240fbf}
+.ent-card{background:#fff;border:1px solid #cbc79e59;border-radius:.8rem;box-shadow:0 16px 30px -16px #0d0f0433,0 2px 6px #0d0f041f;padding:1.6rem 1.7rem}
+.ent-card h3{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--color-pine)}
+.ent-row{padding:.75rem 0;border-top:1px solid #cbc79e59}
+.ent-row:first-of-type{border-top:0}
+.ent-row .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22240f8c}
+.ent-row .v{display:block;margin-top:.15rem;font-weight:600;color:var(--color-ink);font-size:var(--text-sm)}
+.ent-card .btn-cal{margin-top:1.2rem}
+
+/* auto sötét inverz */
+@media (min-width:56rem){[data-theme=dark] .don-right{border-left-color:#f4f2e933}}
+[data-theme=dark] .nav-drop-toggle:hover{background:#f4f2e90d}
+[data-theme=dark] .nav-drop-menu{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .nav-drop-item{color:#f4f2e9d9}
+[data-theme=dark] .nav-drop-item:hover{background:#f4f2e90d}
+[data-theme=dark] /* Egy soros fejléc: körvonalas belépés-ikon,[data-theme=dark] ráhúzáskor olívazöldre tölt */
+.btn-login-icon{border-color:#f4f2e933}
+[data-theme=dark] /* Kétsoros fejléc — második sor: fő navigáció,[data-theme=dark] ikonokkal */
+.ribnav{color:#f4f2e9cc}
+[data-theme=dark] .ribnav:hover{background:#f4f2e90d}
+[data-theme=dark] .akt-card{background:#3a421c}
+[data-theme=dark] .akt-date{color:#f4f2e9b3}
+[data-theme=dark] /* ── Komponensek a site.css-ből (chip,[data-theme=dark] article-body) ── */
+.chip{border-color:#f4f2e933;color:#f4f2e9c7}
+[data-theme=dark] .article-body{color:#f4f2e9d9}
+[data-theme=dark] .article-body ul>li:before{color:#f4f2e9b3}
+[data-theme=dark] .ribnav[aria-current=page]{background:#f4f2e90d}
+[data-theme=dark] /* ── Támogatás oldal réteg ── */
+.gal-note{color:#f4f2e98c}
+[data-theme=dark] .ph-mark{color:#edb84a}
+[data-theme=dark] .adv-stop{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .adv-stop p{color:#f4f2e9bf}
+[data-theme=dark] /* donation card */
+/* ── adománymérő ── */
+.dm-card{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .dm-label{color:#f4f2e98c}
+[data-theme=dark] .dm-nums{color:#f4f2e9b3}
+[data-theme=dark] .dm-sep{color:#f4f2e966}
+[data-theme=dark] .dm-bar{background:#f4f2e914}
+[data-theme=dark] .dm-note{color:#f4f2e98c}
+[data-theme=dark] .don-card{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .don-right .lbl2{color:#f4f2e9cc}
+[data-theme=dark] .don-list li{color:#f4f2e9bf}
+[data-theme=dark] .don-list li:before{color:#f4f2e9b3}
+[data-theme=dark] .seg button{color:#f4f2e999}
+[data-theme=dark] .amt{border-color:#f4f2e933}
+[data-theme=dark] .don-secure{color:#f4f2e98c}
+[data-theme=dark] .don-alt{border-top-color:#f4f2e933}
+[data-theme=dark] .don-alt .lbl{color:#f4f2e98c}
+[data-theme=dark] .iban{background:#333a19;border-color:#f4f2e933;color:#f4f2e9d9}
+[data-theme=dark] .step2 p{color:#f4f2e9bf}
+[data-theme=dark] .ent-card{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .ent-row{border-top-color:#f4f2e933}
+[data-theme=dark] .ent-row .k{color:#f4f2e98c}

@@ -1,0 +1,150 @@
+/* ── Oak & Honey kiegészítő réteg ── */
+#main{background-color:var(--color-paper)}
+/* Címsorok, gombfeliratok, logó: Bricolage Grotesque 700 (h1: 800) */
+.font-display.font-semibold{font-weight:700}
+h1.font-display{font-weight:800}
+.btn,.btn-cal{font-family:var(--font-display);font-weight:700}
+.date-plate .dp-day{font-weight:700}
+/* Fókuszjelzés sötét (olíva) sávokon */
+.bg-pine :focus-visible,footer :focus-visible{outline-color:var(--color-paper)}
+/* Fejléc: Csatlakozás legördülő menü */
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:inline-flex;align-items:center;justify-content:center;width:1.6rem;height:2rem;margin-left:-.35rem;border-radius:.375rem;color:var(--color-pine);transition:background-color .18s}
+.nav-drop-toggle:hover{background:#4a52230d}
+.nav-drop-toggle svg{transition:transform .18s}
+.nav-drop.open .nav-drop-toggle svg{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:calc(100% + .5rem);left:0;z-index:60;min-width:11.5rem;display:none;flex-direction:column;gap:.15rem;padding:.4rem;background:#fff;border:1px solid #cbc79eb3;border-radius:.65rem;box-shadow:0 18px 34px -16px #22240f59,0 3px 8px #22240f1f}
+.nav-drop.open .nav-drop-menu{display:flex}
+.nav-drop-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .7rem;border-radius:.5rem;font-size:var(--text-sm);font-weight:500;color:#22240fd9;transition:background-color .15s,color .15s}
+.nav-drop-item:hover{background:#4a52230d;color:var(--color-pine)}
+/* Mobil almenü behúzása */
+.drawer-sub{margin-left:2.55rem;padding-top:.55rem;padding-bottom:.55rem;font-size:.9375rem}.mdrop-menu{display:flex;flex-direction:column;gap:.25rem}.mdrop-menu[hidden]{display:none}.mdrop-chevron{transition:transform .18s}.mdrop-toggle[aria-expanded="true"] .mdrop-chevron{transform:rotate(180deg)}
+/* Kitöltött olíva gomb (pl. Bejelentkezés) */
+.btn-pine{background:var(--color-pine);color:var(--color-paper)}
+.btn-pine:hover{background:var(--color-pine-deep);transform:translateY(-1px)}
+/* Egy soros fejléc: körvonalas belépés-ikon, ráhúzáskor olívazöldre tölt */
+.btn-login-icon{display:inline-flex;align-items:center;justify-content:center;width:2.35rem;height:2.35rem;border-radius:.55rem;border:1px solid #cbc79eb3;color:var(--color-pine);background:transparent;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.btn-login-icon:hover,.btn-login-icon:focus-visible{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper);box-shadow:0 8px 18px -10px #4a5223cc}
+.btn-login-icon:active{background:var(--color-pine-deep);border-color:var(--color-pine-deep);color:var(--color-paper)}
+/* Kétsoros fejléc — második sor: fő navigáció, ikonokkal */
+.ribnav{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .56rem;border-radius:.5rem;font-size:var(--text-sm);font-weight:500;color:#22240fcc;white-space:nowrap;transition:background-color .15s,color .15s}
+.ribnav:hover{background:#4a52230d;color:var(--color-pine)}
+.rib-nav-row .nav-drop-menu{top:calc(100% - .1rem)}
+/* „Aktuális" sáv kártyái */
+.akt-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+@media (min-width:40rem){.akt-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.akt-grid{grid-template-columns:repeat(3,1fr)}}
+.akt-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:.8rem;box-shadow:0 16px 30px -16px #0d0f0466,0 2px 6px #0d0f0426;transition:transform .22s,box-shadow .22s}
+.akt-card:hover{transform:translateY(-4px);box-shadow:0 24px 40px -18px #0d0f0480,0 3px 8px #0d0f0433}
+.akt-media{margin:0;aspect-ratio:409/222;overflow:hidden;border-radius:.8rem .8rem 0 0;border-bottom:1px solid var(--color-sand)}
+.akt-media img{display:block;width:100%;height:100%;object-fit:cover}
+.akt-body{display:flex;flex:1;flex-direction:column;padding:1.15rem 1.25rem 1.25rem}
+.akt-card:hover .akt-link{color:var(--color-pine)}
+.akt-link:after{content:"";position:absolute;inset:0}
+.akt-link:focus-visible{outline:none}
+.akt-link:focus-visible:after{outline:2px solid var(--color-ember);outline-offset:3px;border-radius:.85rem}
+.akt-date{margin-top:auto;padding-top:1rem;font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240fb3}
+/* Link sötét sávon: méz */
+.link-arrow-dark{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--color-ember);text-underline-offset:4px}
+.link-arrow-dark:hover{color:var(--color-paper);text-decoration:underline}
+
+
+/* ── Komponensek a site.css-ből (chip, article-body) ── */
+.chip{border:1.5px solid #cbc79ecc;align-items:center;gap:.35rem;display:inline-flex;color:#22240fc7;border-radius:999px;padding:.32rem .8rem;font-size:.8rem;font-weight:550;cursor:pointer;background:0 0;transition:color .15s,border-color .15s,background-color .15s;text-decoration:none}
+.chip:hover{border-color:var(--color-pine);color:var(--color-pine)}
+.chip[aria-pressed=true]{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper)}
+.article-body{color:#22240fd9}
+.article-body>*+*{margin-top:.9em}
+.article-body h2,.article-body h3{font-family:var(--font-display);color:var(--color-pine);margin-top:1.6em;font-weight:600}
+.article-body h2{font-size:1.25rem}
+.article-body h3{font-size:1.05rem}
+.article-body ul{padding-left:.2rem;list-style:none}
+.article-body ul>li{margin-top:.4em;padding-left:1.35rem;position:relative}
+.article-body ul>li:before{content:"•—•";font-family:var(--font-mono);letter-spacing:.06em;color:#4a5223b3;font-size:.62em;position:absolute;top:.18em;left:0}
+.article-body strong{color:var(--color-ink)}
+.article-body a{color:var(--color-sky);text-underline-offset:4px}
+.article-body a:hover{text-decoration:underline}
+
+
+/* ── UX-finomítások (Dani visszajelzései nyomán) ── */
+button:not([disabled]){cursor:pointer}
+details[open] > *:not(summary){animation:d-open .22s ease}
+@keyframes d-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){details[open] > *:not(summary){animation:none}}
+.no-reveal .will-reveal{opacity:1!important;transform:none!important;transition:none!important}
+.no-reveal .hero-enter>*{animation:none!important;opacity:1!important;transform:none!important}
+@media (min-width:64rem){header a.btn.btn-ember.btn-sm{min-width:var(--support-btn-w,9.75rem);justify-content:center}}
+/* ── Hiányzó utility-k pótlása (a v4 buildből kimaradtak) ── */
+.m-0{margin:0}
+.flex-1{flex:1 1 0%}
+.pt-8{padding-top:2rem}
+.bg-pine\/5{background-color:color-mix(in oklab,var(--color-pine)5%,transparent)}
+@media (min-width:64rem){.lg\:inline-flex{display:inline-flex}}
+.ribnav[aria-current=page]{color:var(--color-pine);background:#4a52230d}
+.nav-drop-item{white-space:nowrap}
+
+
+/* ── Csatlakozás oldal réteg ── */
+.age-grid{display:grid;gap:1.2rem;grid-template-columns:1fr}
+@media (min-width:48rem){.age-grid{grid-template-columns:repeat(3,1fr)}}
+.age-card{background:#fff;border:1px solid #cbc79e59;border-radius:.8rem;box-shadow:0 10px 22px -16px #0d0f0440,0 2px 5px #0d0f041a;padding:1.6rem 1.6rem 1.7rem;display:flex;flex-direction:column;align-items:flex-start}
+.age-ic{width:2.6rem;height:2.6rem;border-radius:.6rem;display:flex;align-items:center;justify-content:center;background:#4a522314;color:var(--color-pine)}
+.age-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--color-ink);margin-top:1rem}
+.age-card p{margin-top:.5rem;font-size:var(--text-sm);color:#22240fbf}
+.age-tag{display:inline-block;margin-top:.9rem;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#4a5223cc;border:1px solid #cbc79e99;border-radius:999px;padding:.25rem .7rem}
+.age-card .age-tag{margin-top:auto;padding-top:.25rem}
+.step-grid{display:grid;gap:1.6rem;grid-template-columns:1fr}
+@media (min-width:48rem){.step-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.step-num{display:flex;width:3.1rem;height:3.1rem;align-items:center;justify-content:center;border-radius:.55rem;background:var(--color-pine);color:var(--color-paper);font-family:var(--font-display);font-weight:700;font-size:1.35rem}
+.step h3{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--color-ink);margin-top:.9rem}
+.step p{margin-top:.45rem;font-size:var(--text-sm);color:#22240fbf}
+.join-card{background:#fff;border:1px solid #cbc79e59;border-radius:.8rem;box-shadow:0 16px 30px -16px #0d0f0433,0 2px 6px #0d0f041f;padding:1.8rem;display:flex;flex-direction:column;gap:.4rem}
+.join-grid{display:grid;gap:1.2rem;grid-template-columns:1fr}
+@media (min-width:48rem){.join-grid{grid-template-columns:1fr 1fr}}
+.join-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--color-ink)}
+.join-card p{font-size:var(--text-sm);color:#22240fbf}
+.join-card .btn{align-self:flex-start;margin-top:1rem}
+.gal-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240f8c}
+.faq{background:#fff;border:1px solid #cbc79e59;border-radius:.8rem;box-shadow:0 10px 22px -16px #0d0f0440,0 2px 5px #0d0f041a;overflow:hidden}
+.faq details+details{border-top:1px solid #cbc79e59}
+.faq summary{display:flex;align-items:center;gap:.9rem;cursor:pointer;list-style:none;padding:1.1rem 1.3rem;font-weight:600;color:var(--color-ink);transition:background-color .15s,color .15s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{background:#4a522308;color:var(--color-pine)}
+.faq summary .faq-chev{margin-left:auto;flex:0 0 auto;color:#22240f80;transition:transform .2s}
+.faq details[open] summary .faq-chev{transform:rotate(180deg)}
+.faq .faq-a{padding:0 1.3rem 1.2rem;color:#22240fbf;font-size:var(--text-sm);line-height:1.6}
+.ph-mark{color:#b3541e;background:#e0a62e26;border-radius:.25rem;padding:.05rem .35rem}
+
+/* auto sötét inverz */
+[data-theme=dark] .nav-drop-toggle:hover{background:#f4f2e90d}
+[data-theme=dark] .nav-drop-menu{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .nav-drop-item{color:#f4f2e9d9}
+[data-theme=dark] .nav-drop-item:hover{background:#f4f2e90d}
+[data-theme=dark] /* Egy soros fejléc: körvonalas belépés-ikon,[data-theme=dark] ráhúzáskor olívazöldre tölt */
+.btn-login-icon{border-color:#f4f2e933}
+[data-theme=dark] /* Kétsoros fejléc — második sor: fő navigáció,[data-theme=dark] ikonokkal */
+.ribnav{color:#f4f2e9cc}
+[data-theme=dark] .ribnav:hover{background:#f4f2e90d}
+[data-theme=dark] .akt-card{background:#3a421c}
+[data-theme=dark] .akt-date{color:#f4f2e9b3}
+[data-theme=dark] /* ── Komponensek a site.css-ből (chip,[data-theme=dark] article-body) ── */
+.chip{border-color:#f4f2e933;color:#f4f2e9c7}
+[data-theme=dark] .article-body{color:#f4f2e9d9}
+[data-theme=dark] .article-body ul>li:before{color:#f4f2e9b3}
+[data-theme=dark] .ribnav[aria-current=page]{background:#f4f2e90d}
+[data-theme=dark] .age-card{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .age-ic{background:#f4f2e914}
+[data-theme=dark] .age-card p{color:#f4f2e9bf}
+[data-theme=dark] .age-tag{color:#f4f2e9cc;border-color:#f4f2e933}
+[data-theme=dark] .step p{color:#f4f2e9bf}
+[data-theme=dark] .join-card{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .join-card p{color:#f4f2e9bf}
+[data-theme=dark] .gal-note{color:#f4f2e98c}
+[data-theme=dark] .faq{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .faq details+details{border-top-color:#f4f2e933}
+[data-theme=dark] .faq summary:hover{background:#f4f2e908}
+[data-theme=dark] .faq summary .faq-chev{color:#f4f2e980}
+[data-theme=dark] .faq .faq-a{color:#f4f2e9bf}
+[data-theme=dark] .ph-mark{color:#edb84a}
+
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none;cursor:not-allowed;box-shadow:none}

@@ -1,0 +1,7 @@
+---
+import Base from '../../../layouts/Base.astro';
+import main from '../../../partials/bonusz_sk.html?raw';
+---
+<Base title='Bonus – 17. skautský zbor II. Rákóczi Ferenc' desc='Bonusové stránky: zoznamy výstroja, generátor piesní, tajné písma, skautské vedomosti a archív.' path='/sk/bonus' lang='sk' pageCss='/css/bonusz.css' alts={{"hu": "/bonusz", "sk": "/sk/bonus", "en": "/en/extras"}}>
+<Fragment set:html={main} />
+</Base>

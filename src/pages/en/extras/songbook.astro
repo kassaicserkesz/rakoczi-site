@@ -1,0 +1,7 @@
+---
+import Base from '../../../layouts/Base.astro';
+import main from '../../../partials/bonusz-notafa_en.html?raw';
+---
+<Base title='Songbook generator – II. Rákóczi Ferenc Scout Troop' desc='Campfire song list generator: warm-up, upbeat and closing songs for scout campfires.' path='/en/extras/songbook' lang='en' pageCss='/css/bonusz-notafa.css' pageJs='/js/bonusz-notafa.js' alts={{"hu": "/bonusz/notafa", "sk": "/sk/bonus/notafa", "en": "/en/extras/songbook"}}>
+<Fragment set:html={main} />
+</Base>

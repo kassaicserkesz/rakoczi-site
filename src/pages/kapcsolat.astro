@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import main from '../partials/kapcsolat.html?raw';
+---
+<Base alts={{"hu":"/kapcsolat","sk":"/sk/kontakt","en":"/en/contact"}} title='Kapcsolat – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='Lépj kapcsolatba a kassai 17.sz. II. Rákóczi Ferenc cserkészcsapattal: e-mail, telefon és közösségi oldalak.' path='/kapcsolat' pageCss='/css/kapcsolat.css' pageJs='/js/kapcsolat.js'>
+<Fragment set:html={main} />
+</Base>

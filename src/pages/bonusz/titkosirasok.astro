@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import main from '../../partials/bonusz-titkosirasok.html?raw';
+---
+<Base title='Titkosírások – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='Rovásírás-átíró és morze-állomás egy helyen: írd be a szöveged, válts a két jelrendszer közt, hallgasd meg magyarul vagy morzéül.' path='/bonusz/titkosirasok' pageCss='/css/bonusz-titkosirasok.css' pageJs='/js/bonusz-titkosirasok.js' alts={{"hu": "/bonusz/titkosirasok", "sk": "/sk/bonus/tajne-pisma", "en": "/en/extras/secret-codes"}}>
+<Fragment set:html={main} />
+</Base>

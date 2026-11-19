@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import main from '../partials/adatvedelem.html?raw';
+---
+<Base title='Adatvédelmi tájékoztató – 17.sz. II. Rákóczi Ferenc cserkészcsapat' desc='Milyen személyes adatokat, miért és hogyan kezel a kassai cserkészcsapat: GDPR és a 18/2018. sz. szlovák törvény szerint.' path='/adatvedelem' pageCss='/css/adatvedelem.css' alts={{"hu": "/adatvedelem", "sk": "/sk/ochrana-osobnych-udajov", "en": "/en/privacy"}}>
+<Fragment set:html={main} />
+</Base>

@@ -1,0 +1,191 @@
+/* ── Oak & Honey kiegészítő réteg ── */
+#main{background-color:var(--color-paper)}
+/* Címsorok, gombfeliratok, logó: Bricolage Grotesque 700 (h1: 800) */
+.font-display.font-semibold{font-weight:700}
+h1.font-display{font-weight:800}
+.btn,.btn-cal{font-family:var(--font-display);font-weight:700}
+.date-plate .dp-day{font-weight:700}
+/* Fókuszjelzés sötét (olíva) sávokon */
+.bg-pine :focus-visible,footer :focus-visible{outline-color:var(--color-paper)}
+/* Fejléc: Csatlakozás legördülő menü */
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:inline-flex;align-items:center;justify-content:center;width:1.6rem;height:2rem;margin-left:-.35rem;border-radius:.375rem;color:var(--color-pine);transition:background-color .18s}
+.nav-drop-toggle:hover{background:#4a52230d}
+.nav-drop-toggle svg{transition:transform .18s}
+.nav-drop.open .nav-drop-toggle svg{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:calc(100% + .5rem);left:0;z-index:60;min-width:11.5rem;display:none;flex-direction:column;gap:.15rem;padding:.4rem;background:#fff;border:1px solid #cbc79eb3;border-radius:.65rem;box-shadow:0 18px 34px -16px #22240f59,0 3px 8px #22240f1f}
+.nav-drop.open .nav-drop-menu{display:flex}
+.nav-drop-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .7rem;border-radius:.5rem;font-size:var(--text-sm);font-weight:500;color:#22240fd9;transition:background-color .15s,color .15s}
+.nav-drop-item:hover{background:#4a52230d;color:var(--color-pine)}
+/* Mobil almenü behúzása */
+.drawer-sub{margin-left:2.55rem;padding-top:.55rem;padding-bottom:.55rem;font-size:.9375rem}.mdrop-menu{display:flex;flex-direction:column;gap:.25rem}.mdrop-menu[hidden]{display:none}.mdrop-chevron{transition:transform .18s}.mdrop-toggle[aria-expanded="true"] .mdrop-chevron{transform:rotate(180deg)}
+/* Kitöltött olíva gomb (pl. Bejelentkezés) */
+.btn-pine{background:var(--color-pine);color:var(--color-paper)}
+.btn-pine:hover{background:var(--color-pine-deep);transform:translateY(-1px)}
+/* Egy soros fejléc: körvonalas belépés-ikon, ráhúzáskor olívazöldre tölt */
+.btn-login-icon{display:inline-flex;align-items:center;justify-content:center;width:2.35rem;height:2.35rem;border-radius:.55rem;border:1px solid #cbc79eb3;color:var(--color-pine);background:transparent;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.btn-login-icon:hover,.btn-login-icon:focus-visible{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper);box-shadow:0 8px 18px -10px #4a5223cc}
+.btn-login-icon:active{background:var(--color-pine-deep);border-color:var(--color-pine-deep);color:var(--color-paper)}
+/* Kétsoros fejléc — második sor: fő navigáció, ikonokkal */
+.ribnav{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .56rem;border-radius:.5rem;font-size:var(--text-sm);font-weight:500;color:#22240fcc;white-space:nowrap;transition:background-color .15s,color .15s}
+.ribnav:hover{background:#4a52230d;color:var(--color-pine)}
+.rib-nav-row .nav-drop-menu{top:calc(100% - .1rem)}
+/* „Aktuális" sáv kártyái */
+.akt-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+@media (min-width:40rem){.akt-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.akt-grid{grid-template-columns:repeat(3,1fr)}}
+.akt-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:.8rem;box-shadow:0 16px 30px -16px #0d0f0466,0 2px 6px #0d0f0426;transition:transform .22s,box-shadow .22s}
+.akt-card:hover{transform:translateY(-4px);box-shadow:0 24px 40px -18px #0d0f0480,0 3px 8px #0d0f0433}
+.akt-media{margin:0;aspect-ratio:409/222;overflow:hidden;border-radius:.8rem .8rem 0 0;border-bottom:1px solid var(--color-sand)}
+.akt-media img{display:block;width:100%;height:100%;object-fit:cover}
+.akt-body{display:flex;flex:1;flex-direction:column;padding:1.15rem 1.25rem 1.25rem}
+.akt-card:hover .akt-link{color:var(--color-pine)}
+.akt-link:after{content:"";position:absolute;inset:0}
+.akt-link:focus-visible{outline:none}
+.akt-link:focus-visible:after{outline:2px solid var(--color-ember);outline-offset:3px;border-radius:.85rem}
+.akt-date{margin-top:auto;padding-top:1rem;font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240fb3}
+/* Link sötét sávon: méz */
+.link-arrow-dark{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--color-ember);text-underline-offset:4px}
+.link-arrow-dark:hover{color:var(--color-paper);text-decoration:underline}
+
+
+/* ── Komponensek a site.css-ből (chip, article-body) ── */
+.chip{border:1.5px solid #cbc79ecc;align-items:center;gap:.35rem;display:inline-flex;color:#22240fc7;border-radius:999px;padding:.32rem .8rem;font-size:.8rem;font-weight:550;cursor:pointer;background:0 0;transition:color .15s,border-color .15s,background-color .15s;text-decoration:none}
+.chip:hover{border-color:var(--color-pine);color:var(--color-pine)}
+.chip[aria-pressed=true]{background:var(--color-pine);border-color:var(--color-pine);color:var(--color-paper)}
+.article-body{color:#22240fd9}
+.article-body>*+*{margin-top:.9em}
+.article-body h2,.article-body h3{font-family:var(--font-display);color:var(--color-pine);margin-top:1.6em;font-weight:600}
+.article-body h2{font-size:1.25rem}
+.article-body h3{font-size:1.05rem}
+.article-body ul{padding-left:.2rem;list-style:none}
+.article-body ul>li{margin-top:.4em;padding-left:1.35rem;position:relative}
+.article-body ul>li:before{content:"•—•";font-family:var(--font-mono);letter-spacing:.06em;color:#4a5223b3;font-size:.62em;position:absolute;top:.18em;left:0}
+.article-body strong{color:var(--color-ink)}
+.article-body a{color:var(--color-sky);text-underline-offset:4px}
+.article-body a:hover{text-decoration:underline}
+
+
+/* ── UX-finomítások (Dani visszajelzései nyomán) ── */
+button:not([disabled]){cursor:pointer}
+details[open] > *:not(summary){animation:d-open .22s ease}
+@keyframes d-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){details[open] > *:not(summary){animation:none}}
+.no-reveal .will-reveal{opacity:1!important;transform:none!important;transition:none!important}
+.no-reveal .hero-enter>*{animation:none!important;opacity:1!important;transform:none!important}
+@media (min-width:64rem){header a.btn.btn-ember.btn-sm{min-width:var(--support-btn-w,9.75rem);justify-content:center}}
+/* ── Hiányzó utility-k pótlása (a v4 buildből kimaradtak) ── */
+.m-0{margin:0}
+.flex-1{flex:1 1 0%}
+.pt-8{padding-top:2rem}
+.bg-pine\/5{background-color:color-mix(in oklab,var(--color-pine)5%,transparent)}
+@media (min-width:64rem){.lg\:inline-flex{display:inline-flex}}
+.ribnav[aria-current=page]{color:var(--color-pine);background:#4a52230d}
+.nav-drop-item{white-space:nowrap}
+
+.gal-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240f8c}
+.cal-grid{border-left:1px solid #cbc79eb3;grid-template-columns:repeat(7,minmax(0,1fr));display:grid}
+.cal-grid{border-left:1px solid color-mix(in oklab,var(--color-sand) 70%,transparent)}
+.cal-grid{border-top:1px solid #cbc79eb3}
+.cal-grid{border-top:1px solid color-mix(in oklab,var(--color-sand) 70%,transparent)}
+.cal-grid{background:#f9f8f3}
+.cal-grid{background:color-mix(in oklab,var(--color-paper) 55%,white)}
+.cal-cell{border-right:1px solid #cbc79eb3;min-height:5.6rem}
+.cal-cell{border-right:1px solid color-mix(in oklab,var(--color-sand) 70%,transparent)}
+.cal-cell{border-bottom:1px solid #cbc79eb3}
+.cal-cell{border-bottom:1px solid color-mix(in oklab,var(--color-sand) 70%,transparent)}
+.cal-cell{flex-direction:column;gap:.3rem;padding:.35rem .4rem .5rem;display:flex}
+.cal-cell.cal-out{background:#cbc79e24}
+.cal-cell.cal-out{background:color-mix(in oklab,var(--color-sand) 14%,transparent)}
+.cal-daynum{font-family:var(--font-mono);color:#22240f9e;font-size:11px}
+.cal-daynum{color:color-mix(in oklab,var(--color-ink) 62%,transparent)}
+.cal-daynum{align-self:flex-end}
+.cal-cell.cal-today .cal-daynum{background:var(--color-ember);color:var(--color-ink);border-radius:999px;padding:.1rem .42rem;font-weight:500}
+.cal-pill{background:var(--color-pine);color:var(--color-paper);white-space:nowrap;text-overflow:ellipsis;border-radius:.3rem;padding:.18rem .4rem;font-size:11px;font-weight:550;line-height:1.25;display:block;overflow:hidden}
+.cal-pill:hover{background:var(--color-pine-deep)}
+.cal-pill.cal-cont{background:#4a522342}
+.cal-pill.cal-cont{background:color-mix(in oklab,var(--color-pine) 26%,transparent)}
+.cal-pill.cal-cont{color:var(--color-pine-deep)}
+.cal-pill.cal-past{background:#84875b}
+.cal-pill.cal-past{background:color-mix(in oklab,var(--color-pine) 55%,var(--color-sand))}
+/* ── Események oldal réteg ── */
+.cal-wrap{background:#fff;border-radius:.8rem;box-shadow:0 16px 30px -16px #0d0f0433,0 2px 6px #0d0f041f;padding:1.1rem 1.1rem 1.25rem}
+.cal-head{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;justify-content:space-between;padding:.2rem .2rem .9rem}
+.cal-title{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:var(--color-pine);min-width:11rem}
+.cal-ctrls{display:flex;align-items:center;gap:.45rem}
+.cal-nav{display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:.5rem;border:1.5px solid var(--color-sand);background:none;color:var(--color-pine);cursor:pointer;transition:border-color .18s,background-color .18s}
+.cal-nav:hover{border-color:var(--color-pine);background:#4a52230f}
+.cal-nav:disabled{opacity:.35;cursor:default;border-color:var(--color-sand);background:none}
+.cal-select{appearance:none;-webkit-appearance:none;font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--color-pine);border:1.5px solid var(--color-sand);background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234a5223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9.3 6 5.7 6-5.7"/></svg>') no-repeat right .6rem center/0.85rem;border-radius:.5rem;padding:.45rem 2.1rem .45rem .8rem;cursor:pointer;transition:border-color .18s}
+html[data-theme=dark] .cal-select{background-color:#3a421c;color:#f4f2e9;border-color:#f4f2e933;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23f4f2e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9.3 6 5.7 6-5.7"/></svg>')}
+html[data-theme=dark] .cal-select option{background:#3a421c;color:#f4f2e9}
+.cal-select:hover{border-color:var(--color-pine)}
+.cal-select:focus-visible{outline:2px solid var(--color-sky);outline-offset:2px}
+.cal-picker{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
+/* — Naptár hozzáadása dropdown — */
+.sub-row{position:relative;z-index:30}
+.sub-drop{position:relative;display:inline-flex}
+.sub-chev{display:inline-flex;transition:transform .18s}
+.sub-drop.open .sub-chev{transform:rotate(180deg)}
+.sub-menu{position:absolute;top:calc(100% + .6rem);left:0;z-index:70;min-width:22rem;max-width:calc(100vw - 2.5rem);display:none;flex-direction:column;gap:.15rem;background:#fff;border:1px solid #cbc79eb3;border-radius:.8rem;box-shadow:0 26px 50px -20px #22240f59,0 5px 12px #22240f1f;padding:.55rem}
+.sub-drop.open .sub-menu{display:flex;animation:submenu .16s ease}
+@keyframes submenu{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.sub-drop.open .sub-menu{animation:none}}
+.sub-note{padding:.45rem .75rem .4rem;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22240f8c;border-bottom:1px solid #cbc79e66;margin-bottom:.25rem}
+.sub-item{display:flex;gap:.85rem;align-items:center;padding:.6rem .7rem;border-radius:.6rem;transition:background-color .15s}
+.sub-item:hover{background:#4a52230d}
+.sub-item:focus-visible{outline:2px solid var(--color-sky);outline-offset:-2px}
+.sub-ic{flex:0 0 auto;width:2.4rem;height:2.4rem;border-radius:.6rem;display:flex;align-items:center;justify-content:center;background:#4a522314;color:var(--color-pine)}
+.sub-item .t{font-weight:600;font-size:var(--text-sm);color:var(--color-ink)}
+.sub-item .d{font-size:.8rem;line-height:1.4;color:#22240f99}
+.sub-item:hover .t{color:var(--color-pine)}
+.cal-dow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));padding:0 1px .4rem;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22240f8c;text-align:right}
+.cal-dow span{padding-right:.45rem}
+.cal-legend{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;margin-top:.9rem;font-family:var(--font-mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#22240f8c;align-items:center}
+.cal-legend .lg{display:inline-flex;align-items:center;gap:.45rem}
+.cal-legend .sw{width:.85rem;height:.55rem;border-radius:.2rem;display:inline-block}
+.cal-pill+.cal-pill{margin-top:.18rem}
+@media (max-width:40rem){
+  .cal-cell{min-height:3.5rem;padding:.22rem .28rem .3rem;gap:.18rem}
+  .cal-pill{font-size:0;line-height:0;height:.5rem;padding:0;border-radius:999px;min-width:.5rem}
+  .cal-wrap{padding:.7rem .6rem .9rem}
+  .cal-dow span{padding-right:.3rem}
+}
+.sub-hint{font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#22240f8c}
+
+/* auto sötét inverz */
+[data-theme=dark] .nav-drop-toggle:hover{background:#f4f2e90d}
+[data-theme=dark] .nav-drop-menu{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .nav-drop-item{color:#f4f2e9d9}
+[data-theme=dark] .nav-drop-item:hover{background:#f4f2e90d}
+[data-theme=dark] /* Egy soros fejléc: körvonalas belépés-ikon,[data-theme=dark] ráhúzáskor olívazöldre tölt */
+.btn-login-icon{border-color:#f4f2e933}
+[data-theme=dark] /* Kétsoros fejléc — második sor: fő navigáció,[data-theme=dark] ikonokkal */
+.ribnav{color:#f4f2e9cc}
+[data-theme=dark] .ribnav:hover{background:#f4f2e90d}
+[data-theme=dark] .akt-card{background:#3a421c}
+[data-theme=dark] .akt-date{color:#f4f2e9b3}
+[data-theme=dark] /* ── Komponensek a site.css-ből (chip,[data-theme=dark] article-body) ── */
+.chip{border-color:#f4f2e933;color:#f4f2e9c7}
+[data-theme=dark] .article-body{color:#f4f2e9d9}
+[data-theme=dark] .article-body ul>li:before{color:#f4f2e9b3}
+[data-theme=dark] .ribnav[aria-current=page]{background:#f4f2e90d}
+[data-theme=dark] .gal-note{color:#f4f2e98c}
+[data-theme=dark] .cal-grid{border-left-color:#f4f2e933}
+[data-theme=dark] .cal-grid{border-top-color:#f4f2e933}
+[data-theme=dark] .cal-grid{background:#333a19}
+[data-theme=dark] .cal-cell{border-right-color:#f4f2e933}
+[data-theme=dark] .cal-cell{border-bottom-color:#f4f2e933}
+[data-theme=dark] .cal-daynum{color:#f4f2e99e}
+[data-theme=dark] .cal-pill.cal-cont{background:#f4f2e942}
+[data-theme=dark] /* ── Események oldal réteg ── */
+.cal-wrap{background:#3a421c}
+[data-theme=dark] .cal-nav:hover{background:#f4f2e90f}
+[data-theme=dark] .sub-menu{background:#3a421c;border-color:#f4f2e933}
+[data-theme=dark] .sub-note{color:#f4f2e98c;border-bottom-color:#f4f2e933}
+[data-theme=dark] .sub-item:hover{background:#f4f2e90d}
+[data-theme=dark] .sub-ic{background:#f4f2e914}
+[data-theme=dark] .sub-item .d{color:#f4f2e999}
+[data-theme=dark] .cal-dow{color:#f4f2e98c}
+[data-theme=dark] .cal-legend{color:#f4f2e98c}
+[data-theme=dark] .sub-hint{color:#f4f2e98c}

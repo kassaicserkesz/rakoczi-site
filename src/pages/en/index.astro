@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { getAllEvents } from '../../lib/events.js';
+import raw from '../../partials/index_en.html?raw';
+
+const EN_MON = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fmtEn = (iso) => { const [y,m,d] = iso.split('-'); return `${y}.${m}.${d}.`; };
+const fmtLong = (ev) => {
+  const [y,m,d] = ev.data.start.split('-');
+  let s = `${EN_MON[+m]} ${+d}`;
+  if (ev.data.end) s += `–${+ev.data.end.split('-')[2]}`;
+  s += `, ${y}`;
+  if (ev.data.time) s += ` · ${ev.data.time}`;
+  return s;
+};
+const plate = (ev) => {
+  const [y,m,d] = ev.data.start.split('-');
+  const day = ev.data.end ? `${+d}–${+ev.data.end.split('-')[2]}` : `${+d}`;
+  const rng = ev.data.end ? ' dp-range' : '';
+  return `<p class="date-plate"><span class="dp-month">${EN_MON[+m]}</span><span class="dp-day${rng}">${day}</span></p>`;
+};
+const aktCard = (b, i) => `
+<article class="akt-card" data-reveal="" style="--rd:${i*110}ms">
+<figure class="akt-media">${b.data.cover ? `<img src="${b.data.cover}" alt="" width="409" height="222" loading="lazy">` : '<div class="ph-cover" role="img" aria-label="Cover image placeholder">cover image</div>'}</figure>
+<div class="akt-body">
+<h3 class="font-display text-lg font-semibold leading-snug text-ink"><a href="/en/gallery/${b.id}" class="akt-link">${b.data.title}</a></h3>
+<p class="mt-2 text-sm text-ink/75">${(b.body||'').trim()}</p>
+<p class="akt-date"><time datetime="${b.data.date}">${fmtEn(b.data.date)}</time></p>
+</div>
+</article>`;
+const PIN = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>';
+const CALI = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10.5h17"></path></svg>';
+const signRow = (ev, i) => `
+<article class="signpost" data-reveal="" style="--rd:${i*110}ms">
+<div class="signpost-board event-row relative">
+${plate(ev)}
+<div class="min-w-0">
+<h3 class="font-display text-lg font-semibold leading-snug text-ink"><a href="/en/events" class="event-link">${ev.data.title}</a></h3>
+<p class="mt-1 text-sm text-ink/75">${(ev.body||'').trim()}</p>
+<p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.13em] text-ink/70">
+${ev.data.place ? `<span class="inline-flex items-center gap-1.5">${PIN} ${ev.data.place}</span>` : ''}
+<span class="hidden sm:inline">${fmtLong(ev)}</span>
+</p>
+</div>
+${ev.data.ics ? `<a href="${ev.data.ics}" download class="btn-cal relative z-10 justify-self-start md:justify-self-end" title="The file opens in your calendar app and saves the event" aria-label="Add to calendar: ${ev.data.title}">${CALI} Add to calendar</a>` : ''}
+</div>
+</article>`;
+
+const besz = (await getCollection('beszamolok')).sort((a,b)=>b.data.date.localeCompare(a.data.date)).slice(0,3);
+const today = new Date().toISOString().slice(0,10);
+const ese = (await getAllEvents()).filter(e=>(e.data.end||e.data.start)>=today).slice(0,3);
+const main = raw
+  .replace('<!--AKT-->', besz.map(aktCard).join('\n'))
+  .replace('<!--SIGN-->', ese.map(signRow).join('\n'));
+---
+<Base title='II. Rákóczi Ferenc Scout Troop — Scouts in Košice' desc='Hungarian scouting in Košice: weekly patrol meetings, hikes and camps. Meet the troop, join us or support our work.' path='/en/' lang='en' pageCss="/css/index.css" alts={{"hu": "/", "sk": "/sk/", "en": "/en/"}}>
+<Fragment set:html={main} />
+</Base>

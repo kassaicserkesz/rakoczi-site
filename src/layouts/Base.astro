@@ -1,0 +1,80 @@
+---
+import header_hu from '../partials/_header.html?raw';
+import footer_hu from '../partials/_footer.html?raw';
+import social_hu from '../partials/_social.html?raw';
+import drawer_hu from '../partials/_drawer.html?raw';
+import header_sk from '../partials/_header_sk.html?raw';
+import footer_sk from '../partials/_footer_sk.html?raw';
+import social_sk from '../partials/_social_sk.html?raw';
+import drawer_sk from '../partials/_drawer_sk.html?raw';
+import header_en from '../partials/_header_en.html?raw';
+import footer_en from '../partials/_footer_en.html?raw';
+import social_en from '../partials/_social_en.html?raw';
+import drawer_en from '../partials/_drawer_en.html?raw';
+const { title, desc, path, pageCss = null, pageJs = null, lang = 'hu', alts = null } = Astro.props;
+const header = { hu: header_hu, sk: header_sk, en: header_en }[lang];
+const footer = { hu: footer_hu, sk: footer_sk, en: footer_en }[lang];
+const social = { hu: social_hu, sk: social_sk, en: social_en }[lang];
+const drawer = { hu: drawer_hu, sk: drawer_sk, en: drawer_en }[lang];
+const skip = { hu: 'Ugrás a tartalomra', sk: 'Preskočiť na obsah', en: 'Skip to content' }[lang];
+const ogloc = { hu: 'hu_HU', sk: 'sk_SK', en: 'en_GB' }[lang];
+const pillFix = (html) => {
+  if (!alts) return html;
+  let out = html;
+  for (const [l, href] of Object.entries(alts)) {
+    out = out.split(`data-lang="${l}" href="`).map((seg, i) => {
+      if (i === 0) return seg;
+      const q = seg.indexOf('"');
+      return href + seg.slice(q);
+    }).join(`data-lang="${l}" href="`);
+  }
+  return out;
+};
+const headerHtml = pillFix(header);
+const drawerHtml = pillFix(drawer);
+const canonical = `https://kassaicserkesz.sk${path}`;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script is:inline>
+  (function(){
+    try {
+      var s = localStorage.getItem('theme');
+      var dark = s === 'dark' ? true : (s === 'light' ? false : ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || (function(){ var h = new Date().getHours(); return h >= 21 || h < 6; })()));
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      if (sessionStorage.getItem('rv1')) document.documentElement.classList.add('no-reveal');
+    } catch(e) {}
+  })();
+</script>
+<title>{title}</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="description" content={desc} />
+<link rel="canonical" href={canonical} />
+<meta name="theme-color" content="#4a5223" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="17.sz. II. Rákóczi Ferenc cserkészcsapat" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={desc} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={ogloc} />
+{alts && Object.entries(alts).map(([l, href]) => <link rel="alternate" hreflang={l} href={`https://kassaicserkesz.sk${href}`} />)}
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://kassaicserkesz.sk/images/og.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="stylesheet" href="/css/global.css" />
+{pageCss && <link rel="stylesheet" href={pageCss} />}
+</head>
+<body id="top">
+<a href="#main" class="skip-link">{skip}</a>
+<Fragment set:html={headerHtml} />
+<slot />
+<Fragment set:html={social} />
+<Fragment set:html={footer} />
+<Fragment set:html={drawerHtml} />
+<script src="/js/site.js" type="module" is:inline></script>
+{pageJs && <script src={pageJs} type="module" is:inline></script>}
+</body>
+</html>

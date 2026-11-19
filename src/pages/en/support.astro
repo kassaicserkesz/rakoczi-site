@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import raw from '../../partials/tamogatas_en.html?raw';
+import don from '../../data/adomanymero.json';
+const dmFmt = (n) => n.toLocaleString('en-GB') + '\u00a0€';
+const dmPct = Math.max(0, Math.min(100, Math.round(100 * don.eddig / don.cel)));
+const cimke = don.cimke_en || don.cimke;
+const note = don.megjegyzes_en || don.megjegyzes;
+const main = !don.aktiv ? raw.replace(/<!--DM_START-->[\s\S]*?<!--DM_END-->/, '') : raw
+  .replace(/(data-dm="cimke">)[^<]*/, `$1${cimke}`)
+  .replace(/(data-dm="eddig">)[^<]*/, `$1${dmFmt(don.eddig)}`)
+  .replace(/(data-dm="cel">)[^<]*/, `$1${dmFmt(don.cel)}`)
+  .replace(/aria-valuemax="[^"]*"/, `aria-valuemax="${don.cel}"`)
+  .replace(/aria-valuenow="[^"]*"/, `aria-valuenow="${don.eddig}"`)
+  .replace(/(class="dm-fill" style="width:)[^"]*(")/, `$1${dmPct}%$2`)
+  .replace(/(class="dm-pct">)[^<]*/, `$1${dmPct}%`)
+  .replace(/(data-dm="megjegyzes">)[^<]*/, note ? `$1${note}` : '$1');
+---
+<Base title='Support – II. Rákóczi Ferenc Scout Troop' desc='Support the Hungarian scouts of Košice: one-time or monthly donation, bank transfer or 2% of your income tax.' path='/en/support' lang='en' pageCss='/css/tamogatas.css' pageJs='/js/tamogatas.js' alts={{"hu": "/tamogatas", "sk": "/sk/podpora", "en": "/en/support"}}>
+<Fragment set:html={main} />
+</Base>
