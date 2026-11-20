@@ -3,38 +3,42 @@
 <!-- ═══ Online támogatás ═══ -->
 <section id="tamogatas-online" class="relative isolate">
 <div class="container-site hero-enter relative z-10 py-16 md:py-24">
-<p class="eyebrow text-pine/80"><span aria-hidden="true" class="tracking-normal">•—•</span> Podpor nás online</p>
-<h2 class="mt-4 font-display text-xl font-semibold text-pine md:text-2xl">Jednorazová alebo mesačná podpora</h2>
-<p class="mt-4 text-pretty text-base text-ink/80 md:text-lg">Vyber si sumu, platba prebieha na zabezpečenej externej stránke. Mesačnú podporu môžeš kedykoľvek zrušiť.</p>
+<p class="eyebrow text-pine/80"><span aria-hidden="true" class="tracking-normal">•—•</span> Podpora</p>
+<h1 class="mt-4 font-display text-2xl font-semibold text-pine md:text-3xl">Podpor náš oddiel</h1>
+<div class="mt-6 max-w-3xl rounded-xl border border-sand/60 bg-pine/5 p-5 text-sm text-ink/85 md:text-base" role="status">
+<p class="font-display font-semibold text-pine">Sekcia podpory je momentálne vo vývoji</p>
+<p class="mt-1">Online podpora, bankové údaje a podrobnosti k poukázaniu 2 % z dane budú dostupné čoskoro. Ak by si chcel nášmu oddielu pomôcť už teraz, prosím <a href="/sk/kontakt#uzenet" class="font-semibold text-pine underline underline-offset-4 hover:text-ember">napíš nám cez kontaktnú stránku</a>!</p>
+</div>
+
 <div class="don-card mt-10">
-<div class="don-left">
+<div class="don-left opacity-60 pointer-events-none select-none" aria-disabled="true">
 <div class="seg" role="group" aria-label="Frekvencia podpory">
-<button type="button" data-mode="egyszeri" aria-pressed="true">Jednorazovo</button>
-<button type="button" data-mode="havi" aria-pressed="false">Mesačne</button>
+<button type="button" data-mode="egyszeri" aria-pressed="true" disabled>Jednorazovo</button>
+<button type="button" data-mode="havi" aria-pressed="false" disabled>Mesačne</button>
 </div>
 <div class="amt-grid">
-<button type="button" class="amt" aria-pressed="false">10&nbsp;€<span class="per">/mes.</span></button>
-<button type="button" class="amt" aria-pressed="true">20&nbsp;€<span class="per">/mes.</span></button>
-<button type="button" class="amt" aria-pressed="false">50&nbsp;€<span class="per">/mes.</span></button>
-<button type="button" class="amt" aria-pressed="false">Iná<span class="per">suma</span></button>
+<button type="button" class="amt" aria-pressed="false" disabled>10&nbsp;€<span class="per">/mes.</span></button>
+<button type="button" class="amt" aria-pressed="true" disabled>20&nbsp;€<span class="per">/mes.</span></button>
+<button type="button" class="amt" aria-pressed="false" disabled>50&nbsp;€<span class="per">/mes.</span></button>
+<button type="button" class="amt" aria-pressed="false" disabled>Iná<span class="per">suma</span></button>
 </div>
-<a href="#" id="don-btn" class="btn btn-ember" aria-disabled="true" data-lbl-once="Jednorazová podpora kartou" data-lbl-monthly="Nastaviť mesačnú podporu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"></rect><path d="M2.5 9.5h19M6 14.5h4"></path></svg> <span class="don-label">Jednorazová podpora kartou</span></a>
-<p class="don-secure"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path></svg> Zabezpečená platba — Stripe · ukážkový odkaz, pred spustením sem príde platobná stránka</p>
+<a role="link" tabindex="-1" id="don-btn" class="btn btn-ember" aria-disabled="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"></rect><path d="M2.5 9.5h19M6 14.5h4"></path></svg> <span class="don-label">Čoskoro dostupné</span></a>
+<p class="don-secure"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path></svg> Nastavenie online platobnej brány prebieha</p>
 </div>
 <div class="don-right">
 <p class="lbl2">Dobré vedieť</p>
 <ul class="don-list">
-<li>Mesačnú podporu môžeš <strong class="font-semibold text-ink">kedykoľvek zrušiť</strong>, bez záväzkov.</li>
+<li>Mesačnú podporu bude možné <strong class="font-semibold text-ink">kedykoľvek zrušiť</strong>, bez záväzkov.</li>
 <li>Aj malá suma znamená veľa: robí fungovanie oddielu predvídateľným.</li>
 <li>Z podpory financujeme tábory, výstroj a programy.</li>
 </ul>
 <div class="don-alt">
-<p class="lbl">Radšej prevodom?</p>
+<p class="lbl">Bankový prevod</p>
 <div class="iban-row">
-<span class="iban"><span class="ph-mark">[DOPLNIŤ: IBAN]</span></span>
-<button type="button" id="iban-copy" class="btn-cal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Kopírovať</button>
+<span class="iban">Čoskoro</span>
+<button type="button" id="iban-copy" class="btn-cal opacity-50 pointer-events-none" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Kopírovať</button>
 </div>
-<p class="gal-note mt-3">Poznámka pre prijímateľa: „podpora“ + tvoje meno</p>
+<p class="gal-note mt-3">Bankové údaje zverejníme čoskoro</p>
 </div>
 </div>
 </div>
@@ -77,7 +81,7 @@ stroke="var(--color-pine)" stroke-opacity="0.4" stroke-width="2.5" stroke-lineca
 <p><strong>Celý táborový týždeň jedného dieťaťa</strong>, nikto nezostane doma.</p>
 </div>
 </div>
-<p class="gal-note mt-8">Ukážkové príklady a sumy. Skutočné čísla doplní oddiel</p>
+<p class="gal-note mt-8">Orientačné príklady</p>
 </div>
 </div>
 </section>
@@ -102,7 +106,7 @@ stroke="var(--color-pine)" stroke-opacity="0.4" stroke-width="2.5" stroke-lineca
 <span class="n">2</span>
 <div>
 <h3>Vyplň vyhlásenie</h3>
-<p>Stiahni si nižšie tlačivo <em>Vyhlásenie</em>, údaje oddielu sme v ňom predvyplnili.</p>
+<p>Stiahni si nižšie tlačivo <em>Vyhlásenie</em>, údaje oddielu v ňom čoskoro predvyplníme.</p>
 </div>
 </div>
 <div class="step2">
@@ -112,19 +116,19 @@ stroke="var(--color-pine)" stroke-opacity="0.4" stroke-width="2.5" stroke-lineca
 <p>Obe tlačivá odovzdaj daňovému úradu podľa bydliska <strong>do 30. apríla</strong>. Ako podnikateľ môžeš oddiel uviesť priamo v daňovom priznaní.</p>
 </div>
 </div>
-<p class="gal-note mt-6">Presný postup a termíny doplníme spolu s finálnymi dokumentmi</p>
+<p class="gal-note mt-6">Presné údaje a tlačivo na poukázanie 2 % z dane budú dostupné čoskoro</p>
 </div>
 </div>
 <div class="ent-card" data-reveal="" style="--rd:110ms">
 <h3>Údaje prijímateľa</h3>
 <div class="mt-3">
-<div class="ent-row"><span class="k">Názov</span><span class="v"><span class="ph-mark">[DOPLNIŤ: oficiálny názov organizácie]</span></span></div>
-<div class="ent-row"><span class="k">Právna forma</span><span class="v"><span class="ph-mark">[DOPLNIŤ: napr. občianske združenie]</span></span></div>
-<div class="ent-row"><span class="k">IČO</span><span class="v"><span class="ph-mark">[DOPLNIŤ: IČO]</span></span></div>
-<div class="ent-row"><span class="k">Sídlo</span><span class="v"><span class="ph-mark">[DOPLNIŤ: adresa]</span></span></div>
+<div class="ent-row"><span class="k">Názov</span><span class="v">Čoskoro</span></div>
+<div class="ent-row"><span class="k">Právna forma</span><span class="v">Čoskoro</span></div>
+<div class="ent-row"><span class="k">IČO</span><span class="v">Čoskoro</span></div>
+<div class="ent-row"><span class="k">Sídlo</span><span class="v">Čoskoro</span></div>
 </div>
-<a href="#" class="btn-cal" aria-disabled="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5"></path><path d="M4.5 19.5h15"></path></svg> Stiahnuť Vyhlásenie (PDF)</a>
-<p class="gal-note mt-3">Ukážka. Vyplnené tlačivo sem nahráme</p>
+<a role="link" tabindex="-1" class="btn-cal opacity-50 pointer-events-none" aria-disabled="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5"></path><path d="M4.5 19.5h15"></path></svg> Stiahnuť Vyhlásenie (PDF)</a>
+<p class="gal-note mt-3">Čoskoro dostupné</p>
 </div>
 </div>
 </div>
@@ -132,7 +136,7 @@ stroke="var(--color-pine)" stroke-opacity="0.4" stroke-width="2.5" stroke-lineca
 
 <!-- ═══ Köszönet ═══ -->
 <section class="relative isolate overflow-hidden bg-pine text-paper">
-<svg class="pointer-events-none absolute inset-0 h-full w-full " viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true" style="opacity:0.12"> <g stroke="var(--color-paper)" stroke-width="1.4"> <!-- ridge cluster, top right --> <ellipse cx="1118" cy="186" rx="272" ry="152" transform="rotate(-9 1118 186)"></ellipse> <ellipse cx="1130" cy="180" rx="216" ry="117" transform="rotate(-14 1130 180)"></ellipse> <ellipse cx="1140" cy="174" rx="163" ry="86" transform="rotate(-6 1140 174)"></ellipse> <ellipse cx="1149" cy="169" rx="112" ry="57" transform="rotate(-16 1149 169)"></ellipse> <ellipse cx="1156" cy="165" rx="63" ry="31" transform="rotate(-10 1156 165)"></ellipse> <!-- foothills, bottom left --> <ellipse cx="204" cy="588" rx="230" ry="122" transform="rotate(11 204 588)"></ellipse> <ellipse cx="214" cy="596" rx="168" ry="86" transform="rotate(6 214 596)"></ellipse> <ellipse cx="222" cy="602" rx="110" ry="54" transform="rotate(14 222 602)"></ellipse> <!-- small knoll, top middle --> <ellipse cx="620" cy="64" rx="130" ry="58" transform="rotate(-7 620 64)"></ellipse> <ellipse cx="626" cy="60" rx="76" ry="32" transform="rotate(-13 626 60)"></ellipse> </g> <!-- dotted trail crossing the map --> <path d="M-40 556C220 468 430 588 704 506S1180 348 1500 418" stroke="var(--color-paper)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 15"></path> <!-- summit marks --> <path d="m1156 156 6 10h-12z" fill="var(--color-paper)" stroke="none"></path> <path d="M218 596l6 6m0-6-6 6" stroke="var(--color-paper)" stroke-width="1.6" stroke-linecap="round"></path> </svg>
+<svg class="pointer-events-none absolute inset-0 h-full w-full " viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true" style="opacity:0.12"> <g stroke="var(--color-paper)" stroke-width="1.4"> <ellipse cx="1118" cy="186" rx="272" ry="152" transform="rotate(-9 1118 186)"></ellipse> <ellipse cx="1130" cy="180" rx="216" ry="117" transform="rotate(-14 1130 180)"></ellipse> <ellipse cx="1140" cy="174" rx="163" ry="86" transform="rotate(-6 1140 174)"></ellipse> <ellipse cx="1149" cy="169" rx="112" ry="57" transform="rotate(-16 1149 169)"></ellipse> <ellipse cx="1156" cy="165" rx="63" ry="31" transform="rotate(-10 1156 165)"></ellipse> <ellipse cx="204" cy="588" rx="230" ry="122" transform="rotate(11 204 588)"></ellipse> <ellipse cx="214" cy="596" rx="168" ry="86" transform="rotate(6 214 596)"></ellipse> <ellipse cx="222" cy="602" rx="110" ry="54" transform="rotate(14 222 602)"></ellipse> <ellipse cx="620" cy="64" rx="130" ry="58" transform="rotate(-7 620 64)"></ellipse> <ellipse cx="626" cy="60" rx="76" ry="32" transform="rotate(-13 626 60)"></ellipse> </g> <path d="M-40 556C220 468 430 588 704 506S1180 348 1500 418" stroke="var(--color-paper)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 15"></path> <path d="m1156 156 6 10h-12z" fill="var(--color-paper)" stroke="none"></path> <path d="M218 596l6 6m0-6-6 6" stroke="var(--color-paper)" stroke-width="1.6" stroke-linecap="round"></path> </svg>
 <span aria-hidden="true" class="pointer-events-none absolute -bottom-14 right-2 z-0 hidden select-none font-display text-[17rem] font-bold leading-none text-paper/6 lg:block">17</span>
 <div class="container-site relative z-10 py-16 md:py-20" data-reveal="">
 <p class="eyebrow text-paper/75"><span aria-hidden="true" class="tracking-normal">•—•</span> Ďakujeme</p>
@@ -140,7 +144,7 @@ stroke="var(--color-pine)" stroke-opacity="0.4" stroke-width="2.5" stroke-lineca
 <p class="mt-4 max-w-2xl text-pretty text-base text-paper/85">Máš otázku o podpore, alebo by si pomohol inak: vybavením, vedomosťami, časom? Pokojne nám napíš.</p>
 <div class="mt-8 flex flex-wrap gap-3">
 <a href="/sk/kontakt#uzenet" class="btn btn-outline-paper">Napíš nám</a>
-<a href="/partnerek" class="btn btn-ember"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.4S4.9 16 3.1 11.7A5.1 5.1 0 0 1 12 6.8a5.1 5.1 0 0 1 8.9 4.9C19.1 16 12 20.4 12 20.4Z"></path></svg> Naši podporovatelia</a>
+<a href="/sk/partneri" class="btn btn-ember"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.4S4.9 16 3.1 11.7A5.1 5.1 0 0 1 12 6.8a5.1 5.1 0 0 1 8.9 4.9C19.1 16 12 20.4 12 20.4Z"></path></svg> Naši podporovatelia</a>
 </div>
 </div>
 </section>
