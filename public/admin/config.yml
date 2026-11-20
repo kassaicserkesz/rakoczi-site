@@ -2,11 +2,9 @@
 # TEENDŐ élesítéskor: írd át a repo értékét a saját GitHub repótokra!
 backend:
   name: github
-  repo: CSAPAT-GITHUB-NEV/kassaicserkesz-sk   # ← TODO: írd át a saját repótokra!
+  repo: kassaicserkesz/rakoczi-site
   branch: main
-  # A bejelentkezéshez kell egy hitelesítő is — lásd ÁTADÁS.md „Szerkesztőség élesítése”.
-  # Ha kész a Cloudflare Worker (sveltia-cms-auth), töröld a kommentet és írd be a címét:
-  # base_url: https://sveltia-cms-auth.VALAKI.workers.dev
+  base_url: https://sveltia-cms-auth.kassaicserkesz.workers.dev
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
